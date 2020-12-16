@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AjouterJeuxController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,16 +23,24 @@ Route::get('/enonce', function () {
 });
 
 
-Route::get('/jeux/create', [AjouterJeuxController::class, 'create'])->name('jeux.create')->middleware('auth');;
-
-Route::post('/jeux/store', [AjouterJeuxController::class, 'store'])->name('jeux.store');
+Route::get('/jeux/create', [\App\Http\Controllers\JeuController::class, 'create'])->name('jeux.create')->middleware('auth');
 
 Route::resource('jeux', \App\Http\Controllers\JeuController::class);
+Route::post('commentaires', [\App\Http\Controllers\CommentaireController::class, 'store'])->name('commentaires.store')->middleware('auth');
 
 Route::get('/regles', [\App\Http\Controllers\JeuController::class, 'regles'])->name('regles');
 Route::get('/jeux', [\App\Http\Controllers\JeuController::class, 'trie'])->name('jeux.trie');
-
 Route::get('/', [\App\Http\Controllers\JeuController::class, 'aléatoire'])->name('welcome');
+
+
+Route::get('/jeux', [\App\Http\Controllers\JeuController::class, 'liste'])->name('home.jeux');
+Route::get('/', [\App\Http\Controllers\JeuController::class, 'aléatoire'])->name('welcome')->middleware('auth');
+
+Route::get('/user', function () {
+    return view('user.info');
+});
+
+Route::resource('jeux', \App\Http\Controllers\JeuController::class);
 
 Route::get('/user', function () {
     return view('user.info');
