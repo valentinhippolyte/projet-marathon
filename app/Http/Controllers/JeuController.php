@@ -12,9 +12,13 @@ class JeuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($sort = null)
     {
-        $jeux = Jeu::all();
+        if ($sort !== null){
+            $jeux = Jeu::all()->sortBy('nom');
+        }else{
+            $jeux = Jeu::all();
+        }
         return view('jeux.index', ['jeux' => $jeux]);
     }
 
@@ -28,16 +32,7 @@ class JeuController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+
 
     /**
      * Display the specified resource.
@@ -51,39 +46,9 @@ class JeuController extends Controller
         return view('jeux.show', ['jeu' => $jeu]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+
 
     function aléatoire()
     {
@@ -94,5 +59,9 @@ class JeuController extends Controller
     function regles(){
         $jeux = Jeu::all();
         return view('regles', ['jeux' => $jeux]);
+    }
+    function trie(){
+        $jeuxtrie = Jeu::orderBy('nom','ASC')->get();
+        return view('jeux.index', ['jeux' => $jeuxtrie]);
     }
 }

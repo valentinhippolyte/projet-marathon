@@ -31,7 +31,7 @@ Route::post('/jeux/store', [AjouterJeuxController::class, 'store'])->name('jeux.
 Route::resource('jeux', \App\Http\Controllers\JeuController::class);
 
 Route::get('/regles', [\App\Http\Controllers\JeuController::class, 'regles'])->name('regles');
-Route::get('/jeux/trie', [\App\Http\Controllers\JeuController::class, 'trie'])->name('jeux.trie');
+Route::get('/jeux', [\App\Http\Controllers\JeuController::class, 'trie'])->name('jeux.trie');
 
 Route::get('/', [\App\Http\Controllers\JeuController::class, 'aléatoire'])->name('welcome');
 
