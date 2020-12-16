@@ -24,8 +24,14 @@
 
             <div class="card-columns">
             @foreach($jeux as $jeu)
-                <p style="display: none">{{$id=$jeu->id}}</p>
-                <x-CardGame id={{$id}} />
+                <div>
+                    <p style="display: none">{{$id=$jeu->id}}</p>
+                    <x-CardGame id={{$id}} />
+                    <div class="info-jeux" style="border-color: orange">
+                        <a class="link-info"href="/jeux/{{$jeu->id}}"><br>En savoir plus</a>
+                        <button type="button" class="btn btn-primary "><a href="/jeux/{{$jeu->id}}">Acheter</a></button>
+                    </div>
+                </div>
             @endforeach
             </div>
 

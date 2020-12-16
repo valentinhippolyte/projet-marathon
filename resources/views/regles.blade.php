@@ -13,6 +13,6 @@
         @endforeach
     </div>
     <div>
-        <a href="http://127.0.0.1:8000/jeux">Liste complète des jeux</a>
+        <button type="button" class="btn btn-info btn-show"><a href="http://127.0.0.1:8000/jeux">Liste complète des jeux</a></button>
     </div>
 @endsection
