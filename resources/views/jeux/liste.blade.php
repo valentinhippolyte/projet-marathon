@@ -9,15 +9,18 @@
 @section('content')
     <h2>La liste des jeux</h2>
 
+    <p> <a href="http://localhost:8000/jeux/create"> Ajouter un jeu</a> </p>
+
     @if(!empty($jeux))
         <ul>
             @foreach($jeux as $jeu)
                 <li>Nom: {{$jeu->nom}} {{$jeu->url_media}}, Joueurs:  {{$jeu->nombre_joueurs}},
-                    Thème:  {{$jeu->categorie}}, Durée: {{$jeu->duree}}, <a>Plus d'info</a></li>
+                    Thème:  {{$jeu->theme->nom}}, Durée: {{$jeu->duree}}, <a href="http://localhost:8000/jeux/{{$jeu->id}}">Plus d'info</a></li>
             @endforeach
         </ul>
     @else
         <h3>aucun jeu</h3>
     @endif
+    <p> <a href="http://localhost:8000/jeux/create"> Ajouter un jeu</a> </p>
 
 @endsection

@@ -7,12 +7,13 @@
     {{-- ajoute le code css pour bootstrap --}}
     @section('stylesheet')
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
     @show
     <title>{{ config('app.name', 'TP Présentation Laravel') }} - @yield('title', 'Accueil')</title>
 </head>
 <body>
 @section('navbar')
-    <p>En attente d'un menu.</p>
+
 @show
 
 <div class="container">

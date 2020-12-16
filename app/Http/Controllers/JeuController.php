@@ -12,8 +12,29 @@ class JeuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    function liste() {
+    function liste()
+    {
         $jeux = Jeu::all();
         return view('jeux.liste', ['jeux' => $jeux]);
+    }
+
+
+    /**
+     * Display the specified resource.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $jeu = Jeu::all()->find($id);
+        return view('jeux.show', ['jeu' => $jeu]);
+
+
+    }
+    function aléatoire()
+    {
+        $jeux = Jeu::all();
+        return view('welcome', ['jeux' => $jeux]);
     }
 }
