@@ -21,6 +21,6 @@
     @else
         <h3>aucun jeu</h3>
     @endif
-    <p> <a href="http://localhost:8000/jeux/create"> Ajouter un jeu</a> </p>
+
 
 @endsection

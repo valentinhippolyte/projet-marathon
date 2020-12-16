@@ -29,14 +29,13 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/jeux">Nos jeux</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mon espace </a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown01">
-                        <a class="dropdown-item" href="/login">Me connecter</a>
-                        <a class="dropdown-item" href="/register">M'inscrire</a>
-                        <a class="dropdown-item" href="/jeux/create">Ajouter un jeux</a>
-                    </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Connexion</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/register">Inscription</a>
+                </li>
+
             </ul>
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
