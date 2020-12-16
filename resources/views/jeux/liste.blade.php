@@ -13,7 +13,7 @@
         <ul>
             @foreach($jeux as $jeu)
                 <li>Nom: {{$jeu->nom}} {{$jeu->url_media}}, Joueurs:  {{$jeu->nombre_joueurs}},
-                    Thème:  {{$jeu->categorie}}, Durée: {{$jeu->duree}}, <a>Plus d'info</a></li>
+                    Thème:  {{$jeu->theme->nom}}, Durée: {{$jeu->duree}}, <a href="http://localhost:8000/jeux/{{$jeu->id}}">Plus d'info</a></li>
             @endforeach
         </ul>
     @else
