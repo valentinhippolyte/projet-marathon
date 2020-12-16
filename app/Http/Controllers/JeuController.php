@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Commentaire;
 use App\Models\Jeu;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class JeuController extends Controller
@@ -31,6 +33,13 @@ class JeuController extends Controller
         return view('jeux.create');
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public function store(Request $request){
         // validation des données de la requête
         $this->validate(
@@ -73,11 +82,10 @@ class JeuController extends Controller
     public function show($id)
     {
         $jeu = Jeu::all()->find($id);
-        return view('jeux.show', ['jeu' => $jeu]);
+        $commentaires = Commentaire::all();
+        $users = User::all();
+        return view('jeux.show', ['jeu' => $jeu, 'commentaires' => $commentaires, 'users' => $users]);
     }
-
-
-
 
 
     function aléatoire()
