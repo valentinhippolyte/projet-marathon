@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class AjouterJeux extends Model
 {
     use HasFactory;
+
+
 }

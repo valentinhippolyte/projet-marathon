@@ -6,7 +6,7 @@
     @parent
 @endsection
 @section('content')
-    <h2 style="text-align: center">Jeux aléatoire </h2>
+    <h2 style="text-align: center">Jeux aléatoire</h2>
     <button type="button" class="btn btn-secondary btn-show"><a href="">Choix de 5 jeux aléatoires</a></button>
     @for ($i=0; $i<5; $i)
         @if(!empty($jeux))
@@ -50,10 +50,5 @@
         </style>
     </head>
     <body class="antialiased">
-
-
-
-    <!-- ----------------------------------------------- Test du component------------------------------------------ -->
-    <!-- <x-CardGame id=1/> -->
 
 
