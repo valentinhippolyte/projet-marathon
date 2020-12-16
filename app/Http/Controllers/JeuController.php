@@ -2,11 +2,8 @@
 
 namespace App\Http\Controllers;
 
-
-use App\Models\Editeur;
-use App\Models\Theme;
-use Illuminate\Http\Request;
 use App\Models\Jeu;
+use Illuminate\Http\Request;
 
 class JeuController extends Controller
 {
@@ -15,26 +12,43 @@ class JeuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    function liste()
+    public function index($sort = null)
     {
-        $jeux = Jeu::all();
-        return view('jeux.liste', ['jeux' => $jeux]);
+        if ($sort !== null){
+            $jeux = Jeu::all()->sortBy('nom');
+        }else{
+            $jeux = Jeu::all();
+        }
+        return view('jeux.index', ['jeux' => $jeux]);
     }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
 
 
     /**
      * Display the specified resource.
      *
-     * @param int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
         $jeu = Jeu::all()->find($id);
         return view('jeux.show', ['jeu' => $jeu]);
-
-
     }
+
+
+
+
 
     function aléatoire()
     {
@@ -42,9 +56,12 @@ class JeuController extends Controller
         return view('welcome', ['jeux' => $jeux]);
     }
 
-    function regles()
-    {
+    function regles(){
         $jeux = Jeu::all();
         return view('regles', ['jeux' => $jeux]);
+    }
+    function trie(){
+        $jeuxtrie = Jeu::orderBy('nom','ASC')->get();
+        return view('jeux.index', ['jeux' => $jeuxtrie]);
     }
 }
