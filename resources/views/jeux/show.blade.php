@@ -49,6 +49,33 @@
 </div>
 
 <div>
+     <?php $count = 0;$sum=0; $max=0; $min=5?>
+    @foreach($jeu->commentaires as $c)
+        @if($min>$c['note'])
+            <p style="display: none">{{$min = $c['note']}}</p>
+             @endif
+            @if($max<$c['note'])
+                <p style="display: none">{{$max = $c['note']}}</p>
+            @endif
+        <?php $count++?><p style="display: none">{{$sum+=$c['note']}}</p>
+    @endforeach
+         <p><strong>Note moyenne du jeu : </strong>{{ceil($sum/$count)}}</p>
+
+</div>
+<div>
+    {{-- la durée  --}}
+    <p><strong>Note maximale du jeu : </strong>{{$max}}</p>
+</div>
+<div>
+    {{-- la durée  --}}
+    <p><strong>Note minimale du jeu : </strong>{{$min}}</p>
+</div>
+<div>
+    {{-- la durée  --}}
+    <p><strong>Nombre de commentaires pour le jeu : </strong>{{$count}}</p>
+</div>
+
+<div>
     <a href="http://localhost:8000/jeux">Retour à la liste</a>
 </div>
 
