@@ -2,9 +2,14 @@
 
 
 
+
 @section('title', 'Règles des jeux')
 
 @section('content')
+
+@section('content')
+
+
     <div class="text-center" style="margin-top: 2rem">
         <h3>Les règles des jeux</h3>
         <hr class="mt-2 mb-2">
@@ -15,11 +20,14 @@
             <hr>
         @endforeach
     </div>
-    <div>
-        <a href="http://127.0.0.1:8000/jeux">Liste complète des jeux</a>
-    </div>
+
 @endsection
 
 
 
+
+
+        <button type="button" class="btn btn-info btn-show"><a href="http://127.0.0.1:8000/jeux">Liste complète des jeux</a></button>
+    </div>
+@endsection
 

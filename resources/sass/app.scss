@@ -28,9 +28,7 @@
     h2{
         font-family: 'Lobster', cursive;
     }
-    .form{
-        padding-top: 100px;
-    }
+
 
 }
 footer {
@@ -43,8 +41,7 @@ h1,h2,h3{
     margin-top: 30px;
 }
 .btn-add{
-    margin: 30px 45%;
-    width: 100px;
+
 
     a{
         text-align: center;
@@ -60,6 +57,28 @@ h1,h2,h3{
         color: white;
     }
 }
-.form{
-    margin-top: 100px;
+
+
+.info-jeux{
+    margin-bottom: 12px;
+    a{
+        color:white;
+    }
+}
+.card-columns {
+    @include media-breakpoint-only(lg) {
+        column-count: 2;
+    }
+    @include media-breakpoint-only(xs) {
+        column-count: 1;
+    }
+    @include media-breakpoint-only(sm) {
+        column-count: 1;
+    }
+    @include media-breakpoint-only(md) {
+        column-count: 2;
+    }
+    @include media-breakpoint-only(xl) {
+        column-count: 3;
+    }
 }
