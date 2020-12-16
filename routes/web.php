@@ -23,9 +23,14 @@ Route::get('/enonce', function () {
     return view('enonce.index');
 });
 
+
 Route::get('/jeux/create', [AjouterJeuxController::class, 'create'])->name('jeux.create');
 
 Route::post('/jeux/store', [AjouterJeuxController::class, 'store'])->name('jeux.store');
+
+Route::get('/jeux', [\App\Http\Controllers\JeuController::class, 'liste'])->name('home.jeux');
+Route::get('/jeux/{id}', [\App\Http\Controllers\JeuController::class, 'show'])->name('jeux.show');
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
