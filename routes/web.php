@@ -22,7 +22,11 @@ Route::get('/enonce', function () {
     return view('enonce.index');
 });
 Route::get('/jeux', [\App\Http\Controllers\JeuController::class, 'liste'])->name('home.jeux');
-Route::get('/', [\App\Http\Controllers\JeuController::class, 'aléatoire'])->name('welcome')->middleware('auth');;
+Route::get('/', [\App\Http\Controllers\JeuController::class, 'aléatoire'])->name('welcome')->middleware('auth');
+
+Route::get('/user', function () {
+    return view('user.info');
+});
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
