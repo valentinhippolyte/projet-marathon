@@ -39259,23 +39259,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
 __webpack_require__(/*! E:\Marathon\Projet\ludotheque\resources\js\app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! E:\Marathon\Projet\ludotheque\resources\sass\app.scss */"./resources/sass/app.scss");
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-__webpack_require__(/*! C:\Users\maxcm\OneDrive\Bureau\Marathon\ludotheque\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\maxcm\OneDrive\Bureau\Marathon\ludotheque\resources\sass\app.scss */"./resources/sass/app.scss");
-=======
-__webpack_require__(/*! C:\Users\33618\ProjetGit\git\ludotheque\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\33618\ProjetGit\git\ludotheque\resources\sass\app.scss */"./resources/sass/app.scss");
->>>>>>> ddff743dbaae1e6c7540ac7a98dab35f76923783
-=======
-__webpack_require__(/*! /home/goliot/Documents/laboGit/ludotheque/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/goliot/Documents/laboGit/ludotheque/resources/sass/app.scss */"./resources/sass/app.scss");
->>>>>>> branch-matthieu
->>>>>>> 57a2d7a1829254d3c20318721e6405042ef874ed
 
 
 /***/ })

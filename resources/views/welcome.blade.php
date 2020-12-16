@@ -7,7 +7,7 @@
 @endsection
 @section('content')
     <h2 style="text-align: center">Jeux aléatoire </h2>
-    <a href="">Choix de 5 jeux aléatoires</a>
+    <button type="button" class="btn btn-secondary btn-show"><a href="">Choix de 5 jeux aléatoires</a></button>
     @for ($i=0; $i<5; $i)
         @if(!empty($jeux))
             <ul>
@@ -22,7 +22,7 @@
             <h3>aucun jeu</h3>
         @endif
     @endfor
-    <a href="http://127.0.0.1:8000/jeux">Liste complète des jeux</a>
+    <button type="button" class="btn btn-info btn-show"><a href="http://127.0.0.1:8000/jeux">Liste complète des jeux</a></button>
 
 @endsection
 <!DOCTYPE html>
