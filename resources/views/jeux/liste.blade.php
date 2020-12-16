@@ -9,6 +9,8 @@
 @section('content')
     <h2>La liste des jeux</h2>
 
+    <p> <a href="http://localhost:8000/jeux/create"> Ajouter un jeu</a> </p>
+
     @if(!empty($jeux))
         <ul>
             @foreach($jeux as $jeu)
@@ -19,5 +21,6 @@
     @else
         <h3>aucun jeu</h3>
     @endif
+    <p> <a href="http://localhost:8000/jeux/create"> Ajouter un jeu</a> </p>
 
 @endsection
