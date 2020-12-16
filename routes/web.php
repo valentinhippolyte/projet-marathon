@@ -34,7 +34,7 @@ Route::get('/jeux/{id}', [\App\Http\Controllers\JeuController::class, 'show'])->
 Route::get('/regles', [\App\Http\Controllers\JeuController::class, 'regles'])->name('regles');
 
 
-Route::get('/', [\App\Http\Controllers\JeuController::class, 'aléatoire'])->name('welcome')->middleware('auth');;
+Route::get('/', [\App\Http\Controllers\JeuController::class, 'aléatoire'])->name('welcome');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
