@@ -22,6 +22,4 @@
         <h3>aucun jeu</h3>
     @endif
     <button type="button" class="btn btn-primary btn-add"><a href="/jeux/create"> Ajouter un jeu</a></button>
-
-
 @endsection

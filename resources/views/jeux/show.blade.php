@@ -59,7 +59,13 @@
             @endif
         <?php $count++?><p style="display: none">{{$sum+=$c['note']}}</p>
     @endforeach
-         <p><strong>Note moyenne du jeu : </strong>{{ceil($sum/$count)}}</p>
+         @if($count!=0)
+             <p><strong>Note moyenne du jeu : </strong>{{ceil($sum/$count)}}</p>
+         @else
+             <p><strong>Note moyenne du jeu : </strong>pas de note sur ce jeu</p>
+         @endif
+
+
 
 </div>
 <div>
@@ -75,6 +81,30 @@
     <p><strong>Nombre de commentaires pour le jeu : </strong>{{$count}}</p>
 </div>
 
+<div>
+    <?php $countA = 0;$sumA=0; $maxA=0; $minA=300?>
+    @foreach($jeu->acheteurs as $a)
+        @if($minA>$a['achat']['prix'])
+            <p style="display: none">{{$minA = $a['achat']['prix']}}</p>
+        @endif
+        @if($maxA<$a['achat']['prix'])
+            <p style="display: none">{{$maxA = $a['achat']['prix']}}</p>
+        @endif
+        <?php $countA++?><p style="display: none">{{$sumA+=$a['achat']['prix']}}</p>
+    @endforeach
+    @if($countA!=0)
+        <p><strong>Le prix moyen de ce jeu : </strong>{{$sumA/$countA}}</p>
+        @else
+        <p><strong>Le prix moyen de ce jeu : </strong>pas d'information sur le prix du jeu</p>
+        @endif
+</div>
+<div>
+    <p><strong>Prix maximal du jeu : </strong>{{$maxA}}</p>
+</div>
+
+<div>
+    <p><strong>Prix minimal du jeu : </strong>{{$minA}}</p>
+</div>
 <div>
     <a href="http://localhost:8000/jeux">Retour à la liste</a>
 </div>
