@@ -8,9 +8,6 @@
 @endsection
 @section('content')
     <h2>La liste des jeux</h2>
-
-
-
     @if(!empty($jeux))
         <ul>
             @foreach($jeux as $jeu)
@@ -21,7 +18,8 @@
     @else
         <h3>aucun jeu</h3>
     @endif
-    <button type="button" class="btn btn-primary btn-add"><a href="/jeux/create"> Ajouter un jeu</a></button>
+    <!--<button type="button" class="btn btn-primary btn-add"><a href="/jeux/create"> Ajouter un jeu</a></button>>>
 
 
 @endsection
+
