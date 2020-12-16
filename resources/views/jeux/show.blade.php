@@ -48,6 +48,9 @@
     <p><strong>Durée : </strong>{{$jeu->duree}}</p>
 </div>
 
+<?php use App\Models\Jeu
+
+?>
 <div>
      <?php $count = 0;$sum=0; $max=0; $min=5?>
     @foreach($jeu->commentaires as $c)
