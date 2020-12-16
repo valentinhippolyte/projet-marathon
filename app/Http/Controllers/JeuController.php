@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Models\Editeur;
+use App\Models\Theme;
 use Illuminate\Http\Request;
 use App\Models\Jeu;
 
@@ -32,9 +35,16 @@ class JeuController extends Controller
 
 
     }
+
     function aléatoire()
     {
         $jeux = Jeu::all();
         return view('welcome', ['jeux' => $jeux]);
+    }
+
+    function regles()
+    {
+        $jeux = Jeu::all();
+        return view('regles', ['jeux' => $jeux]);
     }
 }
