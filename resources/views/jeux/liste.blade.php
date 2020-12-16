@@ -12,11 +12,12 @@
     @if(!empty($jeux))
         <ul>
             @foreach($jeux as $jeu)
-                <li>{{$jeu->nom}} {{$jeu->description}} {{$jeu->regles}} {{$jeu->langue}} {{$jeu->url_media}} {{$jeu->age}} {{$jeu->nombre_joueurs}} {{$jeu->categorie}} {{$jeu->duree}}</li>
+                <li>Nom: {{$jeu->nom}} {{$jeu->url_media}}, Joueurs:  {{$jeu->nombre_joueurs}},
+                    Thème:  {{$jeu->categorie}}, Durée: {{$jeu->duree}}, <a>Plus d'info</a></li>
             @endforeach
         </ul>
     @else
-        <h3>aucune tâche</h3>
+        <h3>aucun jeu</h3>
     @endif
 
 @endsection
