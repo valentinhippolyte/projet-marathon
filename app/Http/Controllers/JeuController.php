@@ -32,9 +32,15 @@ class JeuController extends Controller
 
 
     }
+
     function aléatoire()
     {
         $jeux = Jeu::all();
         return view('welcome', ['jeux' => $jeux]);
+    }
+
+    function regles(){
+        $jeux = Jeu::all();
+        return view('regles', ['jeux' => $jeux]);
     }
 }
