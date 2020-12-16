@@ -87,6 +87,8 @@
                 <button class="btn btn-success" type="submit">Commenter</button>
             </div>
         </form>
+    @else
+        <p>Pour ajouter un commentaire, identifiez vous <a href="/login">ici</a></p>
     @endif
 
     <div>
