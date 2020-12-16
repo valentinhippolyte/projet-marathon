@@ -17,8 +17,37 @@
 @import '~bootstrap/scss/bootstrap';
 
 header{
-    background-color: red;
+    background-image: url("/images/header.jpg");
+    position: relative;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 1000px;
+    width: 100%;
+    h1{
+        color:#F46D25;
+        padding-top: 20px;
+        font-size: 40px;
+        font-family: 'Lobster', cursive;
+        text-align: center;
+
+    }
+
 }
+
+.accueil-contenu{
+    width: 50%;
+    margin: auto;
+    padding-top: 300px;
+    color: #F46D25;
+    text-align: center;
+    font-size: 30px;
+    p{
+        font-family: 'Nanum Myeongjo', serif;
+        font-weight: 400;
+
+    }
+}
+
 .contenu{
     margin-top: 100px;
     border: 2px dashed #F46D25;
@@ -31,13 +60,16 @@ header{
     h2{
         font-family: 'Lobster', cursive;
     }
+    button{
+        margin-bottom: 30px;
+    }
 
 }
 footer {
     bottom: 0;
     width: 100%;
 }
-h1,h2,h3{
+h2,h3{
     font-family: 'Lobster', cursive;
     text-align: center;
     margin-top: 30px;
@@ -81,4 +113,18 @@ h1,h2,h3{
     @include media-breakpoint-only(xl) {
         column-count: 3;
     }
+}
+.info-jeux{
+    margin-left: 50px;
+
+    btn{
+        color: white;
+    }
+    a{
+        color: blue;
+    }
+}
+.card-deck{
+    margin: 50px auto;
+
 }

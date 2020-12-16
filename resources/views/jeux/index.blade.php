@@ -21,22 +21,20 @@
         <button type="button" class="btn btn-primary btn-add"><a href="/jeux/create"> Ajouter un jeu</a></button>
     </div>
     @if(!empty($jeux))
-
-            <div class="card-columns">
+            <div class="card-deck container">
             @foreach($jeux as $jeu)
                 <div>
                     <p style="display: none">{{$id=$jeu->id}}</p>
                     <x-CardGame id={{$id}} />
-                    <div class="info-jeux" style="border-color: orange">
+                    <div class="info-jeux">
                         <a class="link-info"href="/jeux/{{$jeu->id}}"><br>En savoir plus</a>
-                        <button type="button" class="btn btn-primary "><a href="/jeux/{{$jeu->id}}">Acheter</a></button>
+                        <button type="button" class="btn btn-primary" name="id" value="{{$jeu->id}}"><a href="/jeux/{{$jeu->id}}">Acheter</a></button>
                     </div>
                 </div>
             @endforeach
             </div>
-
     @else
-        <h3>aucun jeu</h3>
+        <h3>Aucun jeu disponible </h3>
     @endif
         <!--Nom: {{$jeu->nom}} {{$jeu->url_media}}, Joueurs:  {{$jeu->nombre_joueurs}},
         Thème:  {{$jeu->theme->nom}}, Durée: {{$jeu->duree}}, <a href="http://localhost:8000/jeux/{{$jeu->id}}">Plus d'info</a>-->

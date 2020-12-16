@@ -9,6 +9,7 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
             <link rel="preconnect" href="https://fonts.gstatic.com">
             <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&family=Open+Sans&display=swap" rel="stylesheet">
 
 
         @show
@@ -44,7 +45,17 @@
         </div>
     </nav>
 @show
+@section('header')
+    <header class="container-fluid">
+        <div class="accueil">
+            <div class="accueil-contenu">
+                <h1>Bienvenue sur RoadToHaveFun !</h1>
+                <p>La meilleure des ludothèques !</p>
+            </div>
+        </div>
 
+    </header>
+@show
 
 <div class="container contenu">
     @yield('content', 'En Attente d\'un contenu')
