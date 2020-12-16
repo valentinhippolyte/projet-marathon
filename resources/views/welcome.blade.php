@@ -4,11 +4,10 @@
 
 @section('navbar')
     @parent
-    <h3 style="text-align: center">Jeu alé</h3>
 @endsection
 @section('content')
-    <div class=" alert alert-success"><h2>Jeux alé </h2></div><h2>Jeux alé </h2>
-    <a href="">Choix de 5 jeux aléatoires</a>
+    <h2 style="text-align: center">Jeux aléatoire </h2>
+    <button name="button choix aléatoire" type="button" class="bouton"><a href="">Choix de 5 jeux aléatoires</a></button>
     @for ($i=0; $i<5; $i)
         @if(!empty($jeux))
             <ul>
@@ -23,6 +22,6 @@
             <h3>aucun jeu</h3>
         @endif
     @endfor
-    <a href="http://127.0.0.1:8000/jeux">Liste complète des jeux</a>
+    <button name="button choix aléatoire" type="button" class="bouton"><a href="http://127.0.0.1:8000/jeux">Liste complète des jeux</a></button>
 
 @endsection
