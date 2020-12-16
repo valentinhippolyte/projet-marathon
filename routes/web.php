@@ -28,10 +28,10 @@ Route::get('/jeux/create', [AjouterJeuxController::class, 'create'])->name('jeux
 
 Route::post('/jeux/store', [AjouterJeuxController::class, 'store'])->name('jeux.store');
 
-Route::get('/jeux', [\App\Http\Controllers\JeuController::class, 'liste'])->name('home.jeux');
-Route::get('/jeux/{id}', [\App\Http\Controllers\JeuController::class, 'show'])->name('jeux.show');
-Route::get('/regles', [\App\Http\Controllers\JeuController::class, 'regles'])->name('regles');
+Route::resource('jeux', \App\Http\Controllers\JeuController::class);
 
+Route::get('/regles', [\App\Http\Controllers\JeuController::class, 'regles'])->name('regles');
+Route::get('/jeux/trie', [\App\Http\Controllers\JeuController::class, 'trie'])->name('jeux.trie');
 
 Route::get('/', [\App\Http\Controllers\JeuController::class, 'aléatoire'])->name('welcome');
 
