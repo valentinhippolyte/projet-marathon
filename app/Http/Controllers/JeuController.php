@@ -16,4 +16,9 @@ class JeuController extends Controller
         $jeux = Jeu::all();
         return view('jeux.liste', ['jeux' => $jeux]);
     }
+
+    function aléatoire() {
+        $jeux = Jeu::all();
+        return view('welcome', ['jeux' => $jeux]);
+    }
 }
