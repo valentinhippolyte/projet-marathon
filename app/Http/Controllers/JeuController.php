@@ -60,7 +60,11 @@ class JeuController extends Controller
 
 
         $jeux->nom = $request->nom;
+        $jeux->age = $request->age;
+        $jeux->nombre_joueurs = $request->nombre_joueurs;
         $jeux->description = $request->description;
+        $jeux->categorie = $request->categorie;
+        $jeux->duree = $request->duree;
         $jeux->theme_id = 1;
         $jeux->editeur_id = 1;
         $jeux->user_id = 1;
