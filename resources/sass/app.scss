@@ -42,8 +42,23 @@ h1,h2,h3{
     text-align: center;
     margin-top: 30px;
 }
-a{
-    text-align: center;
+.btn-add{
+    margin: 30px 45%;
+    width: 100px;
+
+    a{
+        text-align: center;
+        color: white;
+    }
+}
+.btn-show{
+    margin: 30px 43%;
+    width: 170px;
+
+    a{
+        text-align: center;
+        color: white;
+    }
 }
 .form{
     margin-top: 100px;
