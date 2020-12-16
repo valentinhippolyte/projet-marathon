@@ -23,8 +23,6 @@ Route::get('/enonce', function () {
     return view('enonce.index');
 });
 
-<<<<<<< HEAD
-
 
 Route::get('/jeux/create', [AjouterJeuxController::class, 'create'])->name('jeux.create')->middleware('auth');;
 
@@ -36,10 +34,6 @@ Route::get('/regles', [\App\Http\Controllers\JeuController::class, 'regles'])->n
 
 
 Route::get('/', [\App\Http\Controllers\JeuController::class, 'aléatoire'])->name('welcome');
-
-=======
-Route::resource('taches', \App\Http\Controllers\JeuController::class);
->>>>>>> branch-matthieu
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
