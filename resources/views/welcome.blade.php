@@ -20,8 +20,9 @@
                 @endforeach
             </ul>
         @else
-            <h3>aucune tâche</h3>
+            <h3>aucun jeu</h3>
         @endif
     @endfor
+    <a href="http://127.0.0.1:8000/jeux">Liste complète des jeux</a>
 
 @endsection

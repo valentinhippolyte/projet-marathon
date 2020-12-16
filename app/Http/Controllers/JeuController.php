@@ -30,10 +30,11 @@ class JeuController extends Controller
         $jeu = Jeu::all()->find($id);
         return view('jeux.show', ['jeu' => $jeu]);
 
-        function aléatoire()
-        {
-            $jeux = Jeu::all();
-            return view('welcome', ['jeux' => $jeux]);
-        }
+
+    }
+    function aléatoire()
+    {
+        $jeux = Jeu::all();
+        return view('welcome', ['jeux' => $jeux]);
     }
 }
