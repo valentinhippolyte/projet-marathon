@@ -1,7 +1,9 @@
-<div class="card text-white border border-dark rounded" style="width: 18rem; background: rgb(37, 115, 125);">
+
+<div class="card text-white border border-dark rounded" style="width: 18rem; background: rgb(37, 115, 125); min-width: 18rem; max-width: 18rem;">
     <img src="{{$jeux["url_media"]}}" class="card-img-top" alt="avatar">
     <div class="card-body">
         <h5 class="card-title" style="text-align: center">{{$jeux["nom"]}}</h5>
+
         <div class="border border-light rounded">
             <div class="card-header" style="text-align: center">
                 Thèmes

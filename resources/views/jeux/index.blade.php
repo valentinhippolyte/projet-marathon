@@ -22,23 +22,56 @@
     </div>
     @if(!empty($jeux))
 
-            <div class="card-columns">
+
+        <form method="GET">
+        <div class="card-deck">
             @foreach($jeux as $jeu)
                 <div>
                     <p style="display: none">{{$id=$jeu->id}}</p>
                     <x-CardGame id={{$id}} />
                     <div class="info-jeux" style="border-color: orange">
                         <a class="link-info"href="/jeux/{{$jeu->id}}"><br>En savoir plus</a>
-                        <button type="button" class="btn btn-primary "><a href="/jeux/{{$jeu->id}}">Acheter</a></button>
+
+                        <button type="submit" class="btn btn-primary" name="idV" value="{{$id}}">Acheter</button>
                     </div>
                 </div>
             @endforeach
-            </div>
+        </div>
+        </form>
+        <script>
+            function myFunction() {
+                alert("Jeu déjà acheté !");
+            }
+        </script>
+        <?php
+        if(isset($_GET['idV'])){
+            $jeux = App\Models\Jeu::all()->find($_GET['idV']);
+            $estAcheter = false;
+            foreach ($jeux->acheteurs as $acheteur) {
+                if ($acheteur['achat']['user_id'] == Illuminate\Support\Facades\Auth::user()->id) {
+                    $estAcheter = true;
+                    break;
+                }
+            }
+            if ($estAcheter == false) {
+                Illuminate\Support\Facades\DB::table('achats')->insert(
+                    array('jeu_id'=>$jeux['id'], 'user_id'=>Illuminate\Support\Facades\Auth::user()->id,
+                        'date_achat'=>strftime('%Y-%m-%d %H:%M:%S'), 'lieu'=>'France', 'prix'=>150));
+            } else {
+                echo "<script>myFunction()</script>";
+            }
+        }
+        ?>
+>>>>>>> branch-matthieu
 
     @else
         <h3>aucun jeu</h3>
     @endif
+<<<<<<< HEAD
         <!--Nom: {{$jeu->nom}} {{$jeu->url_media}}, Joueurs:  {{$jeu->nombre_joueurs}},
+=======
+    <!--Nom: {{$jeu->nom}} {{$jeu->url_media}}, Joueurs:  {{$jeu->nombre_joueurs}},
+>>>>>>> branch-matthieu
         Thème:  {{$jeu->theme->nom}}, Durée: {{$jeu->duree}}, <a href="http://localhost:8000/jeux/{{$jeu->id}}">Plus d'info</a>-->
 
 
