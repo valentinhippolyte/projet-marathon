@@ -24,7 +24,7 @@ Route::get('/enonce', function () {
 });
 
 
-Route::get('/jeux/create', [AjouterJeuxController::class, 'create'])->name('jeux.create');
+Route::get('/jeux/create', [AjouterJeuxController::class, 'create'])->name('jeux.create')->middleware('auth');;
 
 Route::post('/jeux/store', [AjouterJeuxController::class, 'store'])->name('jeux.store');
 
