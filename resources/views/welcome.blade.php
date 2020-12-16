@@ -7,7 +7,7 @@
 @endsection
 @section('content')
     <h2 style="text-align: center">Jeux aléatoire </h2>
-    <button name="button choix aléatoire" type="button" class="bouton"><a href="">Choix de 5 jeux aléatoires</a></button>
+    <a href="">Choix de 5 jeux aléatoires</a>
     @for ($i=0; $i<5; $i)
         @if(!empty($jeux))
             <ul>
@@ -22,7 +22,7 @@
             <h3>aucun jeu</h3>
         @endif
     @endfor
-    <button name="button choix aléatoire" type="button" class="bouton"><a href="http://127.0.0.1:8000/jeux">Liste complète des jeux</a></button>
+    <a href="http://127.0.0.1:8000/jeux">Liste complète des jeux</a>
 
 @endsection
 <!DOCTYPE html>
@@ -56,4 +56,4 @@
     <!-- ----------------------------------------------- Test du component------------------------------------------ -->
     <!-- <x-CardGame id=1/> -->
 
-    
+

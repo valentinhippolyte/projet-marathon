@@ -9,7 +9,7 @@
 @section('content')
     <h2>La liste des jeux</h2>
 
-     <a href="http://localhost:8000/jeux/create"> Ajouter un jeu</a>
+    <button type="button" class="btn btn-primary"><a href="/jeux/create"> Ajouter un jeu</a></button>
 
     @if(!empty($jeux))
         <ul>
