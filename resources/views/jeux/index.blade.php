@@ -23,20 +23,23 @@
     @if(!empty($jeux))
 
 
-        <form method="GET">
-        <div class="card-deck">
-            @foreach($jeux as $jeu)
-                <div>
-                    <p style="display: none">{{$id=$jeu->id}}</p>
-                    <x-CardGame id={{$id}} />
-                    <div class="info-jeux" style="border-color: orange">
-                        <a class="link-info"href="/jeux/{{$jeu->id}}"><br>En savoir plus</a>
 
-                        <button type="submit" class="btn btn-primary" name="idV" value="{{$id}}">Acheter</button>
+        <form method="GET">
+
+
+            <div class="card-deck container">
+
+                @foreach($jeux as $jeu)
+                    <div>
+                        <p style="display: none">{{$id=$jeu->id}}</p>
+                        <x-CardGame id={{$id}} />
+                        <div class="info-jeux">
+                            <a class="link-info"href="/jeux/{{$jeu->id}}"><br>En savoir plus</a>
+                            <button type="submit" class="btn btn-primary" name="idV" value="{{$id}}">Acheter</button>
+                        </div>
                     </div>
-                </div>
-            @endforeach
-        </div>
+                @endforeach
+            </div>
         </form>
         <script>
             function myFunction() {
@@ -68,10 +71,8 @@
         ?>
 
     @else
-        <h3>aucun jeu</h3>
+        <h3>Aucun jeu disponible </h3>
     @endif
-
-
 
 
 @endsection

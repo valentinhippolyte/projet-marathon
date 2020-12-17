@@ -2,9 +2,23 @@
 
 @section('title', 'Liste des jeux')
 
+
+@section('header')
+    <header class="container-fluid">
+        <div class="accueil">
+            <div class="accueil-contenu">
+                <h1>Bienvenue sur RoadToHaveFun !</h1>
+                <p>La meilleure des ludothèques !</p>
+            </div>
+        </div>
+    </header>
+@endsection
+
 @section('navbar')
     @parent
 @endsection
+
+
 @section('content')
     <h2 style="text-align: center">Jeux aléatoire</h2>
     <button type="button" class="btn btn-secondary btn-show"><a href="">Choix de 5 jeux aléatoires</a></button>
@@ -22,7 +36,7 @@
             <h3>aucun jeu</h3>
         @endif
     @endfor
-    <button type="button" class="btn btn-info btn-show"><a href="http://127.0.0.1:8000/jeux">Liste complète des jeux</a></button>
+    <button type="button" class="btn btn-info btn-show"><a href="/jeux">Liste complète des jeux</a></button>
 
 @endsection
 <!DOCTYPE html>
