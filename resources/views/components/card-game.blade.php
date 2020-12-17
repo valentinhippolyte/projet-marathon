@@ -1,6 +1,6 @@
 
 <div class="card text-white border border-dark rounded" style="width: 18rem; background: rgb(37, 115, 125); min-width: 18rem; max-width: 18rem;">
-    <img src="{{$jeux["url_media"]}}" class="card-img-top" alt="avatar">
+    <img  style="opacity: 0.8" src="{{ $jeux["url_media"] ? $jeux["url_media"] : 'https://placeimg.com/640/480/any' }}"/>
     <div class="card-body">
         <h5 class="card-title" style="text-align: center">{{$jeux["nom"]}}</h5>
 
