@@ -79,11 +79,9 @@
                         @endforeach
                     </div>
                 </div>
-
-
                 <?php $compteur++?>
                 @if($compteur == 6)
-                    @break;
+                    @break
                 @endif
             @endforeach
         @endif
