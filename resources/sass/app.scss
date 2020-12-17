@@ -73,10 +73,14 @@ footer {
     bottom: 0;
     width: 100%;
 }
-h2,h3{
+h2,h3,h4{
     font-family: 'Lobster', cursive;
     text-align: center;
     margin-top: 30px;
+}
+h5{
+    font-family: 'Nanum Myeongjo', serif;
+
 }
 .btn-add{
 
@@ -89,7 +93,6 @@ h2,h3{
 .btn-show{
     margin: 30px 43%;
     width: 170px;
-
     a{
         text-align: center;
         color: white;
@@ -114,10 +117,10 @@ h2,h3{
         column-count: 1;
     }
     @include media-breakpoint-only(md) {
-        column-count: 2;
+        column-count: 1;
     }
     @include media-breakpoint-only(xl) {
-        column-count: 3;
+        column-count: 2;
     }
 }
 .info-jeux{
@@ -132,5 +135,24 @@ h2,h3{
 }
 .card-deck{
     margin: 50px 5%;
-
+}
+.card-accueil{
+    width: 100%;
+    .card-body{
+        max-width: 355px;
+    }
+    .card-img-top{
+        max-width: 355px;
+        background-color:#F46D25 ;
+        min-height: 100px;
+    }
+    .card{
+        max-width: 355px;
+    }
+}
+.carte-body{
+    min-height: 150px;
+    background-color: rgba(37, 115, 125,0.8);
+    text-align: center;
+    color: white;
 }
