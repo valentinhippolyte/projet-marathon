@@ -85,22 +85,21 @@ class JeuController extends Controller
      */
     public function show($id)
     {
+        $nombreJoueursAyantLeJeu = Jeu::find($id)->acheteurs()->count();
+        $nombreTotalJoueurs = User::all()->count();
+        $a = $nombreJoueursAyantLeJeu/$nombreTotalJoueurs* 360;
+        $deg = $a."deg";
+        $a = $a/360*100;
         $jeu = Jeu::all()->find($id);
         $commentaires = Commentaire::all();
         $users = User::all();
         $commentairesTrie = Commentaire::orderBy('date_com','DESC')->get();
-        return view('jeux.show', ['jeu' => $jeu, 'commentaires' => $commentaires, 'users' => $users, 'commentairesTrie' => $commentairesTrie]);
+        return view('jeux.show', ['jeu' => $jeu, 'commentaires' => $commentaires, 'users' => $users, 'commentairesTrie' => $commentairesTrie, 'deg'=>$deg, 'pourcent'=>$a]);
     }
 
-
-    function aléatoire()
+    function aleatoire()
     {
-        $jeux = Jeu::all();
-        return view('welcome', ['jeux' => $jeux]);
-    }
 
-    function les5Meilleurs()
-    {
         $jeux = Jeu::all();
         return view('welcome', ['jeux' => $jeux]);
     }

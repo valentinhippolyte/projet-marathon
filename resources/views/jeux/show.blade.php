@@ -52,11 +52,81 @@
     </div>
 
 
-        <div class="titrestatistique">Statistique du jeu</div>
-        <?php $count = 0;$sum=0; $max=0; $min=5?>
-        @foreach($jeu->commentaires as $c)
-            @if($min>$c['note'])
-                <p style="display: none">{{$min = $c['note']}}</p>
+    <div class="titrestatistique">Statistique du jeu</div>
+    <div>Statistique du jeu</div>
+    <?php $count = 0;$sum=0; $max=0; $min=5?>
+    @foreach($jeu->commentaires as $c)
+        @if($min>$c['note'])
+            <p style="display: none">{{$min = $c['note']}}</p>
+        @endif
+        @if($max<$c['note'])
+            <p style="display: none">{{$max = $c['note']}}</p>
+        @endif
+        <?php $count++?><p style="display: none">{{$sum+=$c['note']}}</p>
+    @endforeach
+    @if($min<=2)
+        <div>
+            <p style="color: red"><strong>Note minimale du jeu : </strong>{{$min}}</p>
+        </div>
+    @endif
+    @if($min==3)
+        <div>
+            <p style="color: #FFD700"><strong>Note minimale du jeu : </strong>{{$min}}</p>
+        </div>
+    @endif
+    @if($min>3)
+        <div>
+            <p style="color: green"><strong>Note minimale du jeu : </strong>{{$min}}</p>
+        </div>
+    @endif
+    @if($max<=2)
+        <div>
+            <p style="color: red"><strong>Note maximale du jeu : </strong>{{$max}}</p>
+        </div>
+    @endif
+    @if($max==3)
+        <div>
+            <p style="color: #FFD700"><strong>Note maximale du jeu : </strong>{{$max}}</p>
+        </div>
+    @endif
+    @if($max>3)
+        <div>
+            <p style="color: green"><strong>Note maximale du jeu : </strong>{{$max}}</p>
+        </div>
+    @endif
+    @if($count!=0)
+        <?php $moyenne = $sum/$count?>
+        @if($moyenne<=2)
+            <div>
+                <p style="color: red"><strong>Note moyenne du jeu : </strong>{{$sum/$count}}</p>
+            </div>
+        @endif
+        @if(2<$moyenne && $moyenne<3)
+            <div>
+                <p style="color: #FFD700"><strong>Note moyenne du jeu : </strong>{{$sum/$count}}</p>
+            </div>
+        @endif
+        @if(3<=$moyenne)
+            <div>
+                <p style="color: green"><strong>Note moyenne du jeu : </strong>{{$sum/$count}}</p>
+            </div>
+        @endif
+    @else
+        <p><strong>Note moyenne du jeu : </strong>pas de note sur ce jeu</p>
+    @endif
+    <div>
+        <p><strong>Nombre de commentaires pour le jeu : </strong>{{$count}}</p>
+    </div>
+    <div>
+        <p><strong>Nombre de commentaires total pour tous les jeux : </strong>{{DB::table('commentaires')->count()}}</p>
+    </div>
+    <div>Informations tarifaires du jeu</div>
+    <div>
+        <?php $countA = 0;$sumA=0; $maxA=0; $minA=300?>
+        @foreach($jeu->acheteurs as $a)
+            @if($minA>$a['achat']['prix'])
+                <p style="display: none">{{$minA = $a['achat']['prix']}}</p>
+
             @endif
             @if($max<$c['note'])
                 <p style="display: none">{{$max = $c['note']}}</p>
@@ -65,6 +135,16 @@
         @endforeach
         @if($count!=0)
             <p><strong>Note moyenne du jeu : </strong>{{$sum/$count}}</p>
+            @endif
+        @if($countA!=0)
+            <p><strong>Le prix moyen de ce jeu : </strong>{{$sumA/$countA}}</p>
+                <div id="msform">
+                    <ul id="progressbar">
+                        <li class="min">{{$minA}}</li>
+                        <li class="moyen"><p>⇑</p>{{$sumA/$countA}}</li>
+                        <li class="max">{{$maxA}}</li>
+                    </ul>
+                </div>
         @else
             <p><strong>Note moyenne du jeu : </strong>pas de note sur ce jeu</p>
         @endif
@@ -119,15 +199,129 @@
 
         </div>
 
+    </div>
+    <style>
+        #msform {
+            width: 50%;
+            margin: 50px auto;
+            text-align: center;
+            position: relative;
+        }
+        #progressbar li {
+            list-style-type: none;
+            color: black;
+            text-transform: uppercase;
+
+            width: 33.33%;
+            float: left;
+            position: relative;
+        }
+        #progressbar li.min:before {
+            content: "min";
+        }
+        #progressbar li.max:before {
+            content: "max";
+        }
+        #progressbar li.moyen:before {
+            content: "moyen";
+        }
+        #progressbar li.moyen p {
+            font-size: 200%;
+            color: #1c7430;
+        }
+        #progressbar li:before {
+            width: 60%;
+            line-height: 20px;
+            padding: 10px;
+            display: block;
+            font-size: 200%;
+            background: grey;
+            border-radius: 3px;
+            margin: 0 auto 5px auto;
+        }
+
+        #progressbar li:after {
+            content: '';
+            width: 100%;
+            height: 2px;
+            font-size: 150%;
+            background: black;
+            position: absolute;
+            left: -50%;
+            top: 25%;
+            z-index: -1;
+        }
+        #progressbar li:first-child:after {
+            content: none;
+        }
+        #progressbar li.min:before,  #progressbar li.min:after{
+            background: green;
+        }
+        #progressbar li.max:before{
+            background: red;
+        }
+    </style>
+    <div>
+        <p><strong>Nombre d'utilisateur qui possède ce jeu : </strong>{{$countA}}</p>
+    </div>
+    <div>
+        <p><strong>Nombre total d'utilisateur du site : </strong>{{DB::table('users')->count()}}</p>
+    </div>
+    <div class="progress-circle">
+        <div class="progress-masque">
+            <div class="progress-barre"></div>
+        </div>
+    </div>
+    <style>
+        .progress-masque {
+            position: absolute;
+            width: 1em;                     /* 100% de la largeur */
+            height: 1em;                    /* 100% de la hauteur */
+            left: -.15em;                   /* décalage de la largeur bordure de la gauge */
+            top: -.15em;                    /* décalage de la largeur bordure de la gauge */
+            clip: rect(0, 1em, 1em, .5em);  /* par défaut seule la partie droite est visible */
+        }
+
+        .progress-circle{
+            position: relative;
+            box-sizing: border-box;
+            font-size: 6em;
+            width: 1em;                     /* fixe la largeur */
+            height: 1em;                    /* fixe la hauteur */
+            border-radius: 50%;             /* rendu aspect circulaire */
+            border: .15em solid grey;
+            background-color: #FFF;
+        }
+
+        .progress-barre,
+        .progress-sup50 {
+            position: absolute;
+            box-sizing: border-box;         /* prise en compte bordure dans la dimension */
+            border-width: .15em;
+            border-style: solid;
+            border-color: green;
+            border-radius: 50%;             /* rendu aspect circulaire */
+            width: 1em;                     /* largeur à 100% */
+            height: 1em;                    /* hauteur à 100% */
+            clip: rect(0, .5em, 1em, 0);
+        }
+        .progress-barre {transform: rotate({{$deg}})}
+    </style>
+    <div>
+        <p><strong>Pourcentage : </strong>{{$pourcent}}</p>
+    </div>
+    <div>
+
+        <a href="http://localhost:8000/jeux">Retour à la liste</a>
+    </div>
 
     <?php $posted = false; ?>
-        @foreach ($commentaires as $unCom)
-            @if ($unCom->user_id == Auth::id() and $unCom->jeu_id == $jeu->id)
-                {{$posted = true}}
-                @break
-            @endif
-        @endforeach
-
+    @foreach ($commentaires as $unCom)
+        @if ($unCom->user_id == Auth::id() and $unCom->jeu_id == $jeu->id)
+            {{$posted = true}}
+            @break
+        @endif
+    @endforeach
 
     @if (auth()->check() and !$posted)
         @if ($errors->any())
@@ -139,7 +333,7 @@
                 </ul>
             </div>
         @endif
-    <div class="section-commentaire">
+        <div class="section-commentaire">
             <form action="{{route('commentaires.store')}}" method="POST">
                 {!! csrf_field() !!}
                 <div class="text-center" style="margin-top: 2rem">
@@ -163,73 +357,68 @@
                     <button class="btn btn-success" type="submit">Commenter</button>
                 </div>
             </form>
-        @elseif(!auth()->check())
-            <p>Pour ajouter un commentaire, identifiez vous <a href="/login">ici</a></p>
-        @endif
-        <h3>Commentaires</h3>
-        <div class="ligne-trie">
-            <form method="GET">
-                {!! csrf_field() !!}
-                <label>Trier par :
-                    <select name="trie" >
-                        <option  value="Plus_recent">Plus récent</option>
-                        <option  value="Plus_ancien">Plus ancien</option>
-                    </select>
-                </label>
-                <input type="submit" name="button" value=" Trier ">
-            </form>
-
-        </div>
-        <div class="comment-list">
-            @if(isset($_GET['trie']) and $_GET['trie'] == "Plus_ancien")
-                @foreach($commentaires as $com)
-                    @if($com->jeu_id == $jeu->id)
-                        @foreach($users as $user)
-                            @if($user->id == $com->user_id)
-                                <ul>
-                                    <li>{{$user->name}}, {{$com->date_com}}</li>
-                                    <li>Note: {{$com->note}}/5, Commentaire : {{$com->commentaire}}</li>
-                                    <li>
-                                        @if(Auth::id() == $com->user_id or $jeu->user_id == Auth::id())
-                                            <a href="/jeux/commentaires/{{$com->id}}">Supprimer</a>
-                                        @endif
-                                    </li>
-
-                                </ul>
-                                @break
-                            @endif
-                        @endforeach
-                    @endif
-                @endforeach
-            @else
-
-                @foreach($commentairesTrie as $com)
-                    @if($com->jeu_id == $jeu->id)
-                        @foreach($users as $user)
-                            @if($user->id == $com->user_id)
-                                <ul>
-                                    <li>{{$user->name}}, {{$com->date_com}}</li>
-                                    <li>Note: {{$com->note}}/5, Commentaire : {{$com->commentaire}}</li>
-                                    <li>
-                                        @if(Auth::id() == $com->user_id or $jeu->user_id == Auth::id())
-                                            <a href="/jeux/commentaires/{{$com->id}}">Supprimer</a>
-                                        @endif
-                                    </li>
-
-                                </ul>
-                                @break
-                            @endif
-                        @endforeach
-                    @endif
-                @endforeach
+            @elseif(!auth()->check())
+                <p>Pour ajouter un commentaire, identifiez vous <a href="/login">ici</a></p>
             @endif
+            <h3>Commentaires</h3>
+            <div class="ligne-trie">
+                <form method="GET">
+                    {!! csrf_field() !!}
+                    <label>Trier par :
+                        <select name="trie" >
+                            <option  value="Plus_recent">Plus récent</option>
+                            <option  value="Plus_ancien">Plus ancien</option>
+                        </select>
+                    </label>
+                    <input type="submit" name="button" value=" Trier ">
+                </form>
+
+            </div>
+            <div class="comment-list">
+                @if(isset($_GET['trie']) and $_GET['trie'] == "Plus_ancien")
+                    @foreach($commentaires as $com)
+                        @if($com->jeu_id == $jeu->id)
+                            @foreach($users as $user)
+                                @if($user->id == $com->user_id)
+                                    <ul>
+                                        <li>{{$user->name}}, {{$com->date_com}}</li>
+                                        <li>Note: {{$com->note}}/5, Commentaire : {{$com->commentaire}}</li>
+                                        <li>
+                                            @if(Auth::id() == $com->user_id or $jeu->user_id == Auth::id())
+                                                <a href="/jeux/commentaires/{{$com->id}}">Supprimer</a>
+                                            @endif
+                                        </li>
+
+                                    </ul>
+                                    @break
+                                @endif
+                            @endforeach
+                        @endif
+                    @endforeach
+                @else
+
+                    @foreach($commentairesTrie as $com)
+                        @if($com->jeu_id == $jeu->id)
+                            @foreach($users as $user)
+                                @if($user->id == $com->user_id)
+                                    <ul>
+                                        <li>{{$user->name}}, {{$com->date_com}}</li>
+                                        <li>Note: {{$com->note}}/5, Commentaire : {{$com->commentaire}}</li>
+                                        <li>
+                                            @if(Auth::id() == $com->user_id or $jeu->user_id == Auth::id())
+                                                <a href="/jeux/commentaires/{{$com->id}}">Supprimer</a>
+                                            @endif
+                                        </li>
+
+                                    </ul>
+                                    @break
+                                @endif
+                            @endforeach
+                        @endif
+                    @endforeach
+                @endif
+            </div>
         </div>
-    </div>
 
 
 @endsection
-
-
-
-
-
