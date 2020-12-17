@@ -17,7 +17,7 @@
 </head>
 <body>
 @section('navbar')
-    <nav class="navbar navbar-expand-md navbar-dark sticky-top" style="background-color: #25737d;">
+    <nav class="navbar navbar-expand-md navbar-dark sticky-top" style="background: linear-gradient(0.25turn, #25737d, #f69d3c);">
         <a class="navbar-brand" href="#"><img src="/images/logo.png"  alt="logo" height="50" width="50"> </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -25,23 +25,19 @@
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/">Accueil </a>
+                    <a class="nav-link"  style="color: white;font-weight: bold; font-size:15px;" href="/">Accueil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/jeux">Nos jeux</a>
+                    <a class="nav-link" style="color: white;font-weight: bold;font-size:15px;" href="/jeux">Nos jeux</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/login">Connexion</a>
+                    <a class="nav-link" style="color: white;font-weight: bold;font-size:15px;" href="/login">Connexion</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/register">Inscription</a>
+                    <a class="nav-link" style="color: white;font-weight: bold;font-size:15px;" href="/register">Inscription</a>
                 </li>
 
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-            </form>
         </div>
     </nav>
 @show
@@ -49,8 +45,9 @@
 @yield('header')
 
 <div class="container contenu">
-    @yield('content', 'En Attente d\'un contenu')
+    @yield('content')
 </div>
+
 
 @section('footer')
     <footer class="pt-4 my-md-5 pt-md-5 border-top">

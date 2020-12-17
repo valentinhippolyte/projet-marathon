@@ -4,8 +4,8 @@
 
 @section('navbar')
     @parent
-    <h3 style="text-align: center">Bienvenue dans la liste des jeux</h3>
 @endsection
+
 @section('content')
     <h2>La liste des jeux</h2>
     <div class="trie-index">
