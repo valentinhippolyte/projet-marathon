@@ -22,10 +22,7 @@
     </div>
     @if(!empty($jeux))
 
-
-
         <form method="GET">
-
 
             <div class="card-deck container">
 

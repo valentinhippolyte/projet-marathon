@@ -22,23 +22,34 @@
 @section('content')
     @if(auth()->check())
     <h2 style="text-align: center">Jeux aléatoire</h2>
-    <button type="button" class="btn btn-secondary btn-show"><a href="">Choix de 5 jeux aléatoires</a></button>
+    <div class=" carte-accueil card-deck">
     @for ($i=0; $i<5; $i)
         @if(!empty($jeux))
-            <ul>
+
                 @foreach($jeux as $jeu)
                     <?php $a = rand(0,1000)?>
                     @if($jeu->id == $a)
-                        <li>Jeu numéro {{$i +=1}} : {{$jeu->nom}}</li>
+                            <div class="card">
+                                <img class="card-img-top" src="/images/image-deco1.jpg" alt="card image cap" style="opacity: 0.5;">
+                                    <div class="card-body carte-body">
+                                        <h5 class="card-title">Jeu numéro {{$i +=1}} :</h5>
+                                        <h4 class="card-text">{{$jeu->nom}}</h4>
+                                    </div>
+                            </div>
                     @endif
                 @endforeach
-            </ul>
+
         @else
             <h3>aucun jeu</h3>
         @endif
     @endfor
+    </div>
     @endif
-    <button type="button" class="btn btn-info btn-show"><a href="/jeux">Liste complète des jeux</a></button>
+    <div>
+        <button type="button" class="btn btn-secondary btn-show"><a href="">Choisir 5 autres jeux aléatoires</a></button>
+        <button type="button" class="btn btn-info btn-show"><a href="/jeux">Liste complète des jeux</a></button>
+    </div>
+
 
 @endsection
 <!DOCTYPE html>
