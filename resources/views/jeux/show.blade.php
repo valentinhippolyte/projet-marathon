@@ -53,8 +53,7 @@
 
 
     <div class="titrestatistique">Statistique du jeu</div>
-    <div>Statistique du jeu</div>
-    <?php $count = 0;$sum=0; $max=0; $min=5?>
+    <?php $count = 0;$sum=0; $max=0; $min=6?>
     @foreach($jeu->commentaires as $c)
         @if($min>$c['note'])
             <p style="display: none">{{$min = $c['note']}}</p>
@@ -75,9 +74,13 @@
         </div>
     @endif
     @if($min>3)
-        <div>
-            <p style="color: green"><strong>Note minimale du jeu : </strong>{{$min}}</p>
-        </div>
+        @if($min == 6)
+            <p style="color: red"><strong>Note minimale du jeu : </strong>0</p>
+        @else
+            <div>
+                <p style="color: green"><strong>Note minimale du jeu : </strong>{{$min}}</p>
+            </div>
+        @endif
     @endif
     @if($max<=2)
         <div>
@@ -121,30 +124,6 @@
         <p><strong>Nombre de commentaires total pour tous les jeux : </strong>{{DB::table('commentaires')->count()}}</p>
     </div>
     <div>
-        <?php $countA = 0;$sumA=0; $maxA=0; $minA=300?>
-        @foreach($jeu->acheteurs as $a)
-            @if($minA>$a['achat']['prix'])
-                <p style="display: none">{{$minA = $a['achat']['prix']}}</p>
-
-            @endif
-            @if($max<$c['note'])
-                <p style="display: none">{{$max = $c['note']}}</p>
-            @endif
-            <?php $count++?><p style="display: none">{{$sum+=$c['note']}}</p>
-        @endforeach
-        @if($countA!=0)
-            <p><strong>Le prix moyen de ce jeu : </strong>{{$sumA/$countA}}</p>
-                <div id="msform">
-                    <ul id="progressbar">
-                        <li class="min">{{$minA}}</li>
-                        <li class="moyen"><p>⇑</p>{{$sumA/$countA}}</li>
-                        <li class="max">{{$maxA}}</li>
-                    </ul>
-                </div>
-        @if($countA==0)
-            <p><strong>Note moyenne du jeu : </strong>pas de note sur ce jeu</p>
-                @endif
-        @endif
         <div>Informations tarifaires du jeu</div>
         <div>
             <?php $countA = 0;$sumA=0; $maxA=0; $minA=300?>
@@ -290,7 +269,7 @@
         .progress-barre {transform: rotate({{$deg}})}
     </style>
     <div>
-        <p><strong>Pourcentage : </strong>{{$pourcent}}</p>
+        <p><strong>Pourcentage des inscrits qui ont le jeu: </strong>{{ceil($pourcent)}}%</p>
     </div>
     <div>
 
