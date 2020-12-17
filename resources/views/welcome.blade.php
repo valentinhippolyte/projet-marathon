@@ -4,6 +4,8 @@
 
 
 @section('header')
+
+
     <div class="container-fluid header">
         <div class="accueil">
             <div class="accueil-contenu">
@@ -82,7 +84,31 @@
             @endif
         @endforeach
     @endif
+
+    <?php if(\Illuminate\Support\Facades\Auth::check()) : ?>
+    <?php
+        $jeuxC = \App\Models\Jeu::all();
+        $jeuxC = count($jeuxC);
+        $nb = intdiv($jeuxC, 5);
+    ?>
+        <?php if(isset($_GET['action'])) : ?>
+        <div class="card-columns">
+        <p style="display: none">{{$n = $_GET['action']*5}}</p>
+        <x-Njeux n={{$n}}/>
+        </div>
+        <?php else: ?>
+        <div class="card-columns">
+        <x-Njeux n={{5}}/>
+        </div>
+        <?php endif; ?>
+    @for($i=1;$i<=$nb;$i++)
+            <a role="button" style="padding-right: 10%;" href="?action={{$i}}">{{$i}}</a>
+        @endfor
+    <?php endif ?>
+
 </div>
+
+
 
 
 
@@ -93,7 +119,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title id="insertion">Laravel</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -112,5 +138,6 @@
         </style>
     </head>
     <body class="antialiased">
+
 
 
