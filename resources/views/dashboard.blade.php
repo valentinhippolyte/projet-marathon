@@ -1,18 +1,17 @@
 @extends('base.master')
 
-@section('title', 'Dashboard')
+@section('title', 'Ludothèques')
 
 @section('content')
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('Ma Ludothèque') }}
         </h2>
     </x-slot>
 
-    <h2>Ludotheque</h2>
     <form method="GET">
-    <div class="card-deck container">
+    <div class="card-deck deck-carte container">
     @foreach(Auth::user()->ludo_perso as $valeur)
             <span style="display: none">{{$id=$valeur->id}}</span>
         @if($valeur!=null)

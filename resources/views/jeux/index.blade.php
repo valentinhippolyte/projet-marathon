@@ -17,14 +17,14 @@
             </select>
             <input type="submit" value=" Trier ">
         </form>
-
+        <button type="button" class="btn btn-primary btn-add"><a href="/regles"> Les règles</a></button>
         <button type="button" class="btn btn-primary btn-add"><a href="/jeux/create"> Ajouter un jeu</a></button>
     </div>
     @if(!empty($jeux))
 
         <form method="GET">
 
-            <div class="card-deck container">
+            <div class="card-deck deck-carte container">
 
                 @foreach($jeux as $jeu)
                     <div>

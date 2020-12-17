@@ -91,7 +91,7 @@ class JeuController extends Controller
         $deg = $a."deg";
         $a = $a/360*100;
         $jeu = Jeu::all()->find($id);
-        $commentaires = Commentaire::all();
+        $commentaires = Commentaire::orderBy('date_com','ASC')->get();
         $users = User::all();
         $commentairesTrie = Commentaire::orderBy('date_com','DESC')->get();
         return view('jeux.show', ['jeu' => $jeu, 'commentaires' => $commentaires, 'users' => $users, 'commentairesTrie' => $commentairesTrie, 'deg'=>$deg, 'pourcent'=>$a]);

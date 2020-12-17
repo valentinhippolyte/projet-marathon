@@ -90,9 +90,14 @@ h5{
         color: white;
     }
 }
-.btn-show{
-    margin: 30px 43%;
-    width: 170px;
+
+.btn-show {
+        margin: 30px;
+        margin-right: auto;
+        margin-left: auto;
+        display: block;
+        width: 170px;
+
     a{
         text-align: center;
         color: white;
@@ -139,7 +144,7 @@ h5{
         color: blue;
     }
 }
-.card-deck{
+.deck-carte{
     margin: 50px 5%;
 }
 .card-accueil{
@@ -275,5 +280,24 @@ h5{
 }
 #progressbar li.max:before{
     background: red;
+}
+
+.container-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin:90px auto 0;
+    align-items: center;
+}
+
+.carte_jeux {
+    width: 175px;
+    padding: 10px;
+    flex-shrink: 0;
+    height: auto;
+}
+.center-carte{
+    display: flex;
+    align-items: center;
 }
 

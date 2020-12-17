@@ -3,6 +3,7 @@
 <head>
     @section('head')
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     @show
     {{-- ajoute le code css pour bootstrap --}}
     @section('stylesheet')
@@ -15,8 +16,42 @@
         @show
     <title>{{ config('app.name', 'TP Présentation Laravel') }} - @yield('title', 'Accueil')</title>
 </head>
-<body>
+<body class="antialiased">
 @section('navbar')
+    @if(auth()->check())
+        <nav class="navbar navbar-expand-md navbar-dark sticky-top" style="background: linear-gradient(0.25turn, #25737d, #f69d3c);">
+            <a class="navbar-brand" href="#"><img src="/images/logo.png"  alt="logo" height="50" width="50"> </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link"  style="color: white;font-weight: bold; font-size:15px;" href="/">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: white;font-weight: bold;font-size:15px;" href="/jeux">Nos jeux</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: white;font-weight: bold;font-size:15px;" href="/login">Mon espace</a>
+                    </li>
+                    <li class="nav-item">
+                        <form method="POST" action="{{route('logout')}}">
+                            @csrf
+                            <a class="nav-link"
+                               href="http://localhost:8000/logout" onclick="event.preventDefault();
+                                this.closest('form').submit();
+                                "style="color: white;font-weight: bold;font-size:15px;">
+                                Déconnexion
+                            </a>
+
+                        </form>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+    @else
     <nav class="navbar navbar-expand-md navbar-dark sticky-top" style="background: linear-gradient(0.25turn, #25737d, #f69d3c);">
         <a class="navbar-brand" href="#"><img src="/images/logo.png"  alt="logo" height="50" width="50"> </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,6 +75,7 @@
             </ul>
         </div>
     </nav>
+    @endif
 @show
 
 @yield('header')
@@ -66,7 +102,7 @@
                     </ul>
                 </div>
                 <div class="col-6 col-md">
-                    <h5>Resources</h5>
+                    <h5>Ressources</h5>
                     <ul class="list-unstyled text-small">
                         <li><a class="text-muted" href="https://getbootstrap.com/">Bootstrap</a></li>
                         <li><a class="text-muted" href="https://www.canva.com/fr_fr/">Canva</a></li>
@@ -88,3 +124,7 @@
 
 </body>
 </html>
+
+
+
+
