@@ -45,17 +45,8 @@
         </div>
     </nav>
 @show
-@section('header')
-    <header class="container-fluid">
-        <div class="accueil">
-            <div class="accueil-contenu">
-                <h1>Bienvenue sur RoadToHaveFun !</h1>
-                <p>La meilleure des ludothèques !</p>
-            </div>
-        </div>
 
-    </header>
-@show
+@yield('header')
 
 <div class="container contenu">
     @yield('content', 'En Attente d\'un contenu')
