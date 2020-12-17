@@ -12,6 +12,7 @@
 
 
 @section('content')
+    @if(auth()->check())
     <h2 style="text-align: center">Jeux aléatoire</h2>
     <button type="button" class="btn btn-secondary btn-show"><a href="">Choix de 5 jeux aléatoires</a></button>
     @for ($i=0; $i<5; $i)
@@ -28,6 +29,7 @@
             <h3>aucun jeu</h3>
         @endif
     @endfor
+    @endif
     <button type="button" class="btn btn-info btn-show"><a href="/jeux">Liste complète des jeux</a></button>
 
 @endsection

@@ -39259,13 +39259,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
-__webpack_require__(/*! /home/hippolyte/PhpstormProjects/ludotheque/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/hippolyte/PhpstormProjects/ludotheque/resources/sass/app.scss */"./resources/sass/app.scss");
-=======
-__webpack_require__(/*! E:\Marathon\Projet\ludotheque\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! E:\Marathon\Projet\ludotheque\resources\sass\app.scss */"./resources/sass/app.scss");
->>>>>>> bf60a8dbd143d5d1bdf2fa398fcfc32378a1e438
+__webpack_require__(/*! /home/antoine/Ludotheque/ludotheque/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/antoine/Ludotheque/ludotheque/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

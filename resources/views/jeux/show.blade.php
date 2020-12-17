@@ -62,7 +62,7 @@
         <?php $count++?><p style="display: none">{{$sum+=$c['note']}}</p>
     @endforeach
     @if($count!=0)
-        <p><strong>Note moyenne du jeu : </strong>{{ceil($sum/$count)}}</p>
+        <p><strong>Note moyenne du jeu : </strong>{{$sum/$count}}</p>
     @else
         <p><strong>Note moyenne du jeu : </strong>pas de note sur ce jeu</p>
     @endif
@@ -77,6 +77,9 @@
     <div>
         {{-- la durée  --}}
         <p><strong>Nombre de commentaires pour le jeu : </strong>{{$count}}</p>
+    </div>
+    <div>
+        <p><strong>Nombre de commentaires total pour tous les jeux : </strong>{{DB::table('commentaires')->count()}}</p>
     </div>
     <div>Informations tarifaires du jeu</div>
     <div>
@@ -102,6 +105,12 @@
 
     <div>
         <p><strong>Prix minimal du jeu : </strong>{{$minA}}</p>
+    </div>
+    <div>
+        <p><strong>Nombre d'utilisateur qui possède ce jeu : </strong>{{$countA}}</p>
+    </div>
+    <div>
+        <p><strong>Nombre total d'utilisateur du site : </strong>{{DB::table('users')->count()}}</p>
     </div>
     <div>
         <a href="http://localhost:8000/jeux">Retour à la liste</a>

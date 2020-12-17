@@ -22,7 +22,6 @@ Route::get('/enonce', function () {
     return view('enonce.index');
 });
 
-
 Route::get('/jeux/create', [\App\Http\Controllers\JeuController::class, 'create'])->name('jeux.create')->middleware('auth');
 
 Route::resource('jeux', \App\Http\Controllers\JeuController::class);
@@ -32,9 +31,6 @@ Route::get('/regles', [\App\Http\Controllers\JeuController::class, 'regles'])->n
 Route::get('/jeux', [\App\Http\Controllers\JeuController::class, 'trie'])->name('jeux.trie');
 Route::get('/', [\App\Http\Controllers\JeuController::class, 'aléatoire'])->name('welcome');
 
-Route::get('/user', function () {
-    return view('user.info');
-});
 
 Route::get('/user', function () {
     return view('user.info');
