@@ -51,7 +51,7 @@
     </div>
     </div>
     <div>Statistique du jeu</div>
-    <?php $count = 0;$sum=0; $max=0; $min=5?>
+    <?php use App\Models\Commentaire;use App\Models\Jeu;use Illuminate\Support\Facades\Auth;$count = 0;$sum=0; $max=0; $min=5?>
     @foreach($jeu->commentaires as $c)
         @if($min>$c['note'])
             <p style="display: none">{{$min = $c['note']}}</p>
@@ -115,7 +115,17 @@
     <div>
         <a href="http://localhost:8000/jeux">Retour à la liste</a>
     </div>
-    @if (auth()->check())
+
+    <?php $posted = false; ?>
+        @foreach ($commentaires as $unCom)
+            @if ($unCom->user_id == Auth::id() and $unCom->jeu_id == $jeu->id)
+                {{$posted = true}}
+                @break
+            @endif
+        @endforeach
+
+
+    @if (auth()->check() and !$posted)
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -149,7 +159,7 @@
                 <button class="btn btn-success" type="submit">Commenter</button>
             </div>
         </form>
-    @else
+    @elseif(!auth()->check())
         <p>Pour ajouter un commentaire, identifiez vous <a href="/login">ici</a></p>
     @endif
 
