@@ -47,24 +47,33 @@
             }
         </script>
         <?php
-                if(isset($_GET['idV'])){
-                    if (auth()->check()) {
-                    $jeux = App\Models\Jeu::all()->find($_GET['idV']);
-                    $estAcheter = false;
-                    foreach ($jeux->acheteurs as $acheteur) {
-                        if ($acheteur['achat']['user_id'] == Illuminate\Support\Facades\Auth::user()->id) {
-                            $estAcheter = true;
-                            break;
-                        }
-                    }
-                    if ($estAcheter == false) {
-                        Illuminate\Support\Facades\DB::table('achats')->insert(
-                            array('jeu_id'=>$jeux['id'], 'user_id'=>Illuminate\Support\Facades\Auth::user()->id,
-                                'date_achat'=>strftime('%Y-%m-%d %H:%M:%S'), 'lieu'=>'France', 'prix'=>150));
-                    } else {
-                        echo "<script>myFunction()</script>";
-                    }
-                } else {
-                        redirect('/dashboard')->send();
-                    }
+
+        if(isset($_GET['idV'])){
+            if (auth()->check()) {
+            $jeux = App\Models\Jeu::all()->find($_GET['idV']);
+            $estAcheter = false;
+            foreach ($jeux->acheteurs as $acheteur) {
+                if ($acheteur['achat']['user_id'] == Illuminate\Support\Facades\Auth::user()->id) {
+                    $estAcheter = true;
+                    break;
+                }
             }
+            if ($estAcheter == false) {
+                Illuminate\Support\Facades\DB::table('achats')->insert(
+                    array('jeu_id'=>$jeux['id'], 'user_id'=>Illuminate\Support\Facades\Auth::user()->id,
+                        'date_achat'=>strftime('%Y-%m-%d %H:%M:%S'), 'lieu'=>'France', 'prix'=>150));
+            } else {
+                echo "<script>myFunction()</script>";
+            }
+            } else {
+                redirect('/dashboard')->send();
+            }
+        }
+        ?>
+
+    @else
+        <h3>Aucun jeu disponible </h3>
+    @endif
+
+
+@endsection
