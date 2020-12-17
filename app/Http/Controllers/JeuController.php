@@ -99,6 +99,12 @@ class JeuController extends Controller
         return view('welcome', ['jeux' => $jeux]);
     }
 
+    function les5Meilleurs()
+    {
+        $jeux = Jeu::all();
+        return view('welcome', ['jeux' => $jeux]);
+    }
+
     function regles(){
         $jeux = Jeu::all();
         return view('regles', ['jeux' => $jeux]);
