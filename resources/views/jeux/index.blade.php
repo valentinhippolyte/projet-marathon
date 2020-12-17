@@ -47,7 +47,9 @@
             }
         </script>
         <?php
+
         if(isset($_GET['idV'])){
+            if (auth()->check()) {
             $jeux = App\Models\Jeu::all()->find($_GET['idV']);
             $estAcheter = false;
             foreach ($jeux->acheteurs as $acheteur) {
@@ -63,6 +65,9 @@
             } else {
                 echo "<script>myFunction()</script>";
             }
+            } else {
+                redirect('/dashboard')->send();
+            }
         }
         ?>
 
@@ -70,7 +75,5 @@
         <h3>Aucun jeu disponible </h3>
     @endif
 
-    <!--Nom: {{$jeu->nom}} {{$jeu->url_media}}, Joueurs:  {{$jeu->nombre_joueurs}},
-        Thème:  {{$jeu->theme->nom}}, Durée: {{$jeu->duree}}, <a href="http://localhost:8000/jeux/{{$jeu->id}}">Plus d'info</a>-->
 
 @endsection

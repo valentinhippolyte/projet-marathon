@@ -2,11 +2,19 @@
 
 @section('title', 'Liste des jeux')
 
-@section('navbar')
-    @parent
-@endsection
 
 @section('header')
+    <header class="container-fluid">
+        <div class="accueil">
+            <div class="accueil-contenu">
+                <h1>Bienvenue sur RoadToHaveFun !</h1>
+                <p>La meilleure des ludothèques !</p>
+            </div>
+        </div>
+    </header>
+@endsection
+
+@section('navbar')
     @parent
 @endsection
 
