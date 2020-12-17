@@ -120,7 +120,6 @@
     <div>
         <p><strong>Nombre de commentaires total pour tous les jeux : </strong>{{DB::table('commentaires')->count()}}</p>
     </div>
-    <div>Informations tarifaires du jeu</div>
     <div>
         <?php $countA = 0;$sumA=0; $maxA=0; $minA=300?>
         @foreach($jeu->acheteurs as $a)
@@ -133,9 +132,6 @@
             @endif
             <?php $count++?><p style="display: none">{{$sum+=$c['note']}}</p>
         @endforeach
-        @if($count!=0)
-            <p><strong>Note moyenne du jeu : </strong>{{$sum/$count}}</p>
-            @endif
         @if($countA!=0)
             <p><strong>Le prix moyen de ce jeu : </strong>{{$sumA/$countA}}</p>
                 <div id="msform">
@@ -145,24 +141,10 @@
                         <li class="max">{{$maxA}}</li>
                     </ul>
                 </div>
-        @else
+        @if($countA==0)
             <p><strong>Note moyenne du jeu : </strong>pas de note sur ce jeu</p>
+                @endif
         @endif
-        <div>
-            {{-- la durée  --}}
-            <p><strong>Note maximale du jeu : </strong>{{$max}}</p>
-        </div>
-        <div>
-            {{-- la durée  --}}
-            <p><strong>Note minimale du jeu : </strong>{{$min}}</p>
-        </div>
-        <div>
-            {{-- la durée  --}}
-            <p><strong>Nombre de commentaires pour le jeu : </strong>{{$count}}</p>
-        </div>
-        <div>
-            <p><strong>Nombre de commentaires total pour tous les jeux : </strong>{{DB::table('commentaires')->count()}}</p>
-        </div>
         <div>Informations tarifaires du jeu</div>
         <div>
             <?php $countA = 0;$sumA=0; $maxA=0; $minA=300?>
