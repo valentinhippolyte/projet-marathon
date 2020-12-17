@@ -68,11 +68,3 @@
                         redirect('/dashboard')->send();
                     }
             }
-        ?>
-
-    @else
-        <h3>Aucun jeu disponible </h3>
-    @endif
-
-
-@endsection
