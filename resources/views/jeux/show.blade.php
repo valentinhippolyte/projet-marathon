@@ -16,10 +16,10 @@
     <div>
         {{-- les mécaniques  --}}
         <p><strong>Mécaniques : </strong>
-            @foreach($jeu->mecaniques as $mecanique)
-                <li>{{$mecanique->nom}}</li>
+        @foreach($jeu->mecaniques as $mecanique)
+            <li>{{$mecanique->nom}}</li>
             @endforeach
-        </p>
+            </p>
     </div>
     <div>
         {{-- la description  --}}
@@ -154,16 +154,16 @@
     @endif
 
 
-        <form method="GET">
-            {!! csrf_field() !!}
-            <label>Trier par :
-                <select name="trie" >
-                    <option  value="Plus_recent">Plus récent</option>
-                    <option  value="Plus_ancien">Plus ancien</option>
-                </select>
-            </label>
-            <input type="submit" name="button" value=" Trier ">
-        </form>
+    <form method="GET">
+        {!! csrf_field() !!}
+        <label>Trier par :
+            <select name="trie" >
+                <option  value="Plus_recent">Plus récent</option>
+                <option  value="Plus_ancien">Plus ancien</option>
+            </select>
+        </label>
+        <input type="submit" name="button" value=" Trier ">
+    </form>
     <div>
         @if(isset($_GET['trie']) and $_GET['trie'] == "Plus_ancien")
             @foreach($commentaires as $com)
@@ -183,7 +183,7 @@
             @foreach($commentairesTrie as $com)
                 @if($com->jeu_id == $jeu->id)
                     @foreach($users as $user)
-                        @if($ugiser->id == $com->user_id)
+                        @if($user->id == $com->user_id)
                             <ul>
                                 <li>{{$user->name}}, {{$com->date_com}}</li>
                                 <li>Note: {{$com->note}}/5, Commentaire : {{$com->commentaire}}</li>
@@ -197,7 +197,6 @@
     </div>
 
 @endsection
-
 
 
 
