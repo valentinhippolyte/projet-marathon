@@ -183,6 +183,12 @@
                             <ul>
                                 <li>{{$user->name}}, {{$com->date_com}}</li>
                                 <li>Note: {{$com->note}}/5, Commentaire : {{$com->commentaire}}</li>
+                                <li>
+                                    @if(Auth::id() == $com->user_id or $jeu->user_id == Auth::id())
+                                        <a href="/jeux/commentaires/{{$com->id}}">Supprimer</a>
+                                    @endif
+                                </li>
+
                             </ul>
                             @break
                         @endif
@@ -197,6 +203,9 @@
                             <ul>
                                 <li>{{$user->name}}, {{$com->date_com}}</li>
                                 <li>Note: {{$com->note}}/5, Commentaire : {{$com->commentaire}}</li>
+                                @if(Auth::id() == $com->user_id or $jeu->user_id == Auth::id())
+                                    <a href="/jeux/commentaires/{{$com->id}}">Supprimer</a>
+                                @endif
                             </ul>
                             @break
                         @endif

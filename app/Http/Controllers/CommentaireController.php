@@ -46,4 +46,16 @@ class CommentaireController extends Controller
         // redirection vers la page qui affiche la liste des tâches
         return back();
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Request $request, $id) {
+        $commentaire = Commentaire::all()->find($id);
+        $commentaire->delete();
+        return back();
+    }
 }
