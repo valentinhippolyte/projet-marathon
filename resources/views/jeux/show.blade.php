@@ -95,17 +95,82 @@
         @endforeach
         @if($countA!=0)
             <p><strong>Le prix moyen de ce jeu : </strong>{{$sumA/$countA}}</p>
+                <div id="msform">
+                    <ul id="progressbar">
+                        <li class="min">{{$minA}}</li>
+                        <li class="moyen"><p>⇑</p>{{$sumA/$countA}}</li>
+                        <li class="max">{{$maxA}}</li>
+                    </ul>
+                </div>
         @else
             <p><strong>Le prix moyen de ce jeu : </strong>pas d'information sur le prix du jeu</p>
         @endif
     </div>
-    <div>
-        <p><strong>Prix maximal du jeu : </strong>{{$maxA}}</p>
-    </div>
+    <style>
+        body {
+            font-family: arial;
+        }
+        /*form styles*/
+        #msform {
+            width: 50%;
+            margin: 50px auto;
+            text-align: center;
+            position: relative;
+        }
+        #progressbar li {
+            list-style-type: none;
+            color: black;
+            text-transform: uppercase;
 
-    <div>
-        <p><strong>Prix minimal du jeu : </strong>{{$minA}}</p>
-    </div>
+            width: 33.33%;
+            float: left;
+            position: relative;
+        }
+        #progressbar li.min:before {
+            content: "min";
+        }
+        #progressbar li.max:before {
+            content: "max";
+        }
+        #progressbar li.moyen:before {
+            content: "moyen";
+        }
+        #progressbar li.moyen p {
+            font-size: 200%;
+            color: #1c7430;
+        }
+        #progressbar li:before {
+            width: 60%;
+            line-height: 20px;
+            padding: 10px;
+            display: block;
+            font-size: 200%;
+            background: grey;
+            border-radius: 3px;
+            margin: 0 auto 5px auto;
+        }
+
+        #progressbar li:after {
+            content: '';
+            width: 100%;
+            height: 2px;
+            font-size: 150%;
+            background: black;
+            position: absolute;
+            left: -50%;
+            top: 25%;
+            z-index: -1;
+        }
+        #progressbar li:first-child:after {
+            content: none;
+        }
+        #progressbar li.min:before,  #progressbar li.min:after{
+            background: green;
+        }
+        #progressbar li.max:before{
+            background: red;
+        }
+    </style>
     <div>
         <p><strong>Nombre d'utilisateur qui possède ce jeu : </strong>{{$countA}}</p>
     </div>
