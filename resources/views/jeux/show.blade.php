@@ -153,20 +153,47 @@
         <p>Pour ajouter un commentaire, identifiez vous <a href="/login">ici</a></p>
     @endif
 
+
+        <form method="GET">
+            {!! csrf_field() !!}
+            <label>Trier par :
+                <select name="trie" >
+                    <option  value="Plus_recent">Plus récent</option>
+                    <option  value="Plus_ancien">Plus ancien</option>
+                </select>
+            </label>
+            <input type="submit" name="button" value=" Trier ">
+        </form>
     <div>
-        @foreach($commentaires as $com)
-            @if($com->jeu_id == $jeu->id)
-                @foreach($users as $user)
-                    @if($user->id == $com->user_id)
-                        <ul>
-                            <li>{{$user->name}}, {{$com->date_com}}</li>
-                            <li>Note: {{$com->note}}/5, Commentaire : {{$com->commentaire}}</li>
-                        </ul>
-                        @break
-                    @endif
-                @endforeach
-            @endif
-        @endforeach
+        @if(isset($_GET['trie']) and $_GET['trie'] == "Plus_ancien")
+            @foreach($commentaires as $com)
+                @if($com->jeu_id == $jeu->id)
+                    @foreach($users as $user)
+                        @if($user->id == $com->user_id)
+                            <ul>
+                                <li>{{$user->name}}, {{$com->date_com}}</li>
+                                <li>Note: {{$com->note}}/5, Commentaire : {{$com->commentaire}}</li>
+                            </ul>
+                            @break
+                        @endif
+                    @endforeach
+                @endif
+            @endforeach
+        @else
+            @foreach($commentairesTrie as $com)
+                @if($com->jeu_id == $jeu->id)
+                    @foreach($users as $user)
+                        @if($ugiser->id == $com->user_id)
+                            <ul>
+                                <li>{{$user->name}}, {{$com->date_com}}</li>
+                                <li>Note: {{$com->note}}/5, Commentaire : {{$com->commentaire}}</li>
+                            </ul>
+                            @break
+                        @endif
+                    @endforeach
+                @endif
+            @endforeach
+        @endif
     </div>
 
 @endsection

@@ -39260,12 +39260,21 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /***/ (function(module, exports, __webpack_require__) {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 __webpack_require__(/*! /home/hippolyte/PhpstormProjects/ludotheque/resources/js/app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! /home/hippolyte/PhpstormProjects/ludotheque/resources/sass/app.scss */"./resources/sass/app.scss");
 =======
 __webpack_require__(/*! /home/antoine/Ludotheque/ludotheque/resources/js/app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! /home/antoine/Ludotheque/ludotheque/resources/sass/app.scss */"./resources/sass/app.scss");
 >>>>>>> pagnier
+=======
+__webpack_require__(/*! C:\Users\33618\ProjetGit\git\ludotheque\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\33618\ProjetGit\git\ludotheque\resources\sass\app.scss */"./resources/sass/app.scss");
+=======
+__webpack_require__(/*! /home/hippolyte/PhpstormProjects/ludotheque/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/hippolyte/PhpstormProjects/ludotheque/resources/sass/app.scss */"./resources/sass/app.scss");
+>>>>>>> 8eba98c6cc5af11adaee75870e259ab1088cb025
+>>>>>>> 5a6bbf10d1f3a3fa87f02870629361db46b84026
 
 
 /***/ })

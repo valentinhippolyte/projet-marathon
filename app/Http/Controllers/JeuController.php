@@ -88,7 +88,8 @@ class JeuController extends Controller
         $jeu = Jeu::all()->find($id);
         $commentaires = Commentaire::all();
         $users = User::all();
-        return view('jeux.show', ['jeu' => $jeu, 'commentaires' => $commentaires, 'users' => $users]);
+        $commentairesTrie = Commentaire::orderBy('date_com','DESC')->get();
+        return view('jeux.show', ['jeu' => $jeu, 'commentaires' => $commentaires, 'users' => $users, 'commentairesTrie' => $commentairesTrie]);
     }
 
 
