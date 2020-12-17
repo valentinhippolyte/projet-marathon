@@ -51,6 +51,41 @@
     </div>
 
 
+<div>
+
+    @if(auth()->check())
+        <?php $count = 0;$sum=0; $lesmeilleurs=array();$compteur=1 ?>
+        @foreach($jeux as $jeu)
+            @foreach($jeu->commentaires as $c)
+                    <?php $count++?><p style="display: none">{{$sum+=$c['note']}}</p>
+            @endforeach
+
+            @if($count !== 0)
+                    <p style="display: none">{{$lesmeilleurs[$jeu->nom] = $sum/$count}}</p>
+                <?php $count = 0;$sum=0;?>
+            @endif
+        @endforeach
+        {{arsort($lesmeilleurs)}}
+        @foreach($lesmeilleurs as $key => $val)
+
+            <p>top {{$compteur}}: {{$key}} avec une note de {{$val}}
+                @foreach($jeux as $unJeu)
+                    @if($unJeu->nom == $key)
+                        <a class="link-info"href="/jeux/{{$unJeu->id}}"><br>En savoir plus</a>
+                        @break;
+                    @endif
+                @endforeach
+            </p>
+                <?php $compteur++?>
+            @if($compteur == 6)
+                @break;
+            @endif
+        @endforeach
+    @endif
+</div>
+
+
+
 @endsection
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
