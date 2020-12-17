@@ -112,4 +112,5 @@ class JeuController extends Controller
         $jeuxtrie = Jeu::orderBy('nom','ASC')->get();
         return view('jeux.index', ['jeux' => $jeuxtrie]);
     }
+
 }

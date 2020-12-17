@@ -4,6 +4,8 @@
 
 
 @section('header')
+
+
     <div class="container-fluid header">
         <div class="accueil">
             <div class="accueil-contenu">
@@ -79,20 +81,35 @@
                         @endforeach
                     </div>
                 </div>
-
-
                 <?php $compteur++?>
-                @if($compteur == 6)
-                    @break;
-                @endif
-            @endforeach
-        @endif
+            @if($compteur == 6)
+                @break;
+            @endif
+        @endforeach
+    @endif
     </div>
+
+
+    <?php if(\Illuminate\Support\Facades\Auth::check()) : ?>
+    <?php
+        $jeuxC = \App\Models\Jeu::all();
+        $jeuxC = count($jeuxC);
+        $nb = intdiv($jeuxC, 5);
+    ?>
+        <?php if(isset($_GET['action'])) : ?>
+        <div class="card-columns">
+        <p style="display: none">{{$n = $_GET['action']*5}}</p>
+        <x-Njeux n={{$n}}/>
+        </div>
+        <?php else: ?>
+        <div class="card-columns">
+        <x-Njeux n={{5}}/>
+        </div>
+        <?php endif; ?>
+    @for($i=1;$i<=$nb;$i++)
+            <a role="button" style="padding-right: 9%;" href="?action={{$i}}">{{$i}}</a>
+        @endfor
+    <?php endif ?>
 
 @endsection
 @endif
-
-
-
-
-
