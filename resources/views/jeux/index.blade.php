@@ -29,17 +29,17 @@
 
             <div class="card-deck container">
 
-            @foreach($jeux as $jeu)
-                <div>
-                    <p style="display: none">{{$id=$jeu->id}}</p>
-                    <x-CardGame id={{$id}} />
-                    <div class="info-jeux">
-                        <a class="link-info"href="/jeux/{{$jeu->id}}"><br>En savoir plus</a>
-                        <button type="submit" class="btn btn-primary" name="idV" value="{{$id}}">Acheter</button>
+                @foreach($jeux as $jeu)
+                    <div>
+                        <p style="display: none">{{$id=$jeu->id}}</p>
+                        <x-CardGame id={{$id}} />
+                        <div class="info-jeux">
+                            <a class="link-info"href="/jeux/{{$jeu->id}}"><br>En savoir plus</a>
+                            <button type="submit" class="btn btn-primary" name="idV" value="{{$id}}">Acheter</button>
+                        </div>
                     </div>
-                </div>
-            @endforeach
-        </div>
+                @endforeach
+            </div>
         </form>
         <script>
             function myFunction() {
@@ -70,7 +70,7 @@
         <h3>Aucun jeu disponible </h3>
     @endif
 
-        <!--Nom: {{$jeu->nom}} {{$jeu->url_media}}, Joueurs:  {{$jeu->nombre_joueurs}},
+    <!--Nom: {{$jeu->nom}} {{$jeu->url_media}}, Joueurs:  {{$jeu->nombre_joueurs}},
         Thème:  {{$jeu->theme->nom}}, Durée: {{$jeu->duree}}, <a href="http://localhost:8000/jeux/{{$jeu->id}}">Plus d'info</a>-->
 
 @endsection
