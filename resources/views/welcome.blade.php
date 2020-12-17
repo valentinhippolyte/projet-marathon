@@ -4,14 +4,14 @@
 
 
 @section('header')
-    <header class="container-fluid">
+    <div class="container-fluid header">
         <div class="accueil">
             <div class="accueil-contenu">
                 <h1>Bienvenue sur RoadToHaveFun !</h1>
                 <p>La meilleure des ludothèques !</p>
             </div>
         </div>
-    </header>
+    </div>
 @endsection
 
 @section('navbar')

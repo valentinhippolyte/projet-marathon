@@ -16,7 +16,7 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 /*Bon*/
-header{
+.header{
     background-image: url("/images/header.jpg");
     position: relative;
     background-size: cover;
@@ -36,7 +36,7 @@ header{
 .accueil-contenu{
     width: 50%;
     margin: auto;
-    padding-top: 300px;
+    padding-top: 200px;
     color: #F46D25;
     text-align: center;
     font-size: 30px;
@@ -47,10 +47,13 @@ header{
     }
 }
 
-
+.card-body{
+    min-height: 355px;
+}
 .contenu{
     margin-top: 100px;
     border: 2px dashed #F46D25;
+    border-radius: 15px;
     ul{
         text-align: center;
     }
@@ -128,6 +131,6 @@ h2,h3{
     }
 }
 .card-deck{
-    margin: 50px auto;
+    margin: 50px 5%;
 
 }
