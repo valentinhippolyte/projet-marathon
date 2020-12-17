@@ -27,7 +27,7 @@ Route::get('/jeux/create', [\App\Http\Controllers\JeuController::class, 'create'
 
 Route::resource('jeux', \App\Http\Controllers\JeuController::class);
 Route::post('commentaires', [\App\Http\Controllers\CommentaireController::class, 'store'])->name('commentaires.store')->middleware('auth');
-
+Route::get('/commentaires', [\App\Http\Controllers\JeuController::class, 'trie'])->name('commentaires.trie');
 Route::get('/regles', [\App\Http\Controllers\JeuController::class, 'regles'])->name('regles');
 Route::get('/jeux', [\App\Http\Controllers\JeuController::class, 'trie'])->name('jeux.trie');
 Route::get('/', [\App\Http\Controllers\JeuController::class, 'aléatoire'])->name('welcome');
