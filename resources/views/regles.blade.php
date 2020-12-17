@@ -16,7 +16,7 @@
     </div>
     <div>
         @foreach($jeux as $jeu)
-            <li>{{$jeu->nom}} : {{$jeu->regles}}; <a href="http://localhost:8000/jeux/{{$jeu->id}}"> lien vers le jeu </a></li>
+            <li class ="liste_jeux">{{$jeu->nom}} : {{$jeu->regles}}; <br><button class="btn btn-secondary btn-show" type="submit"><a href="http://localhost:8000/jeux/{{$jeu->id}}"> lien vers le jeu </a></button></li>
             <hr>
         @endforeach
     </div>
