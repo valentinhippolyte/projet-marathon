@@ -177,7 +177,51 @@
     <div>
         <p><strong>Nombre total d'utilisateur du site : </strong>{{DB::table('users')->count()}}</p>
     </div>
+    <div class="progress-circle">
+        <div class="progress-masque">
+            <div class="progress-barre"></div>
+        </div>
+    </div>
+    <style>
+        .progress-masque {
+            position: absolute;
+            width: 1em;                     /* 100% de la largeur */
+            height: 1em;                    /* 100% de la hauteur */
+            left: -.15em;                   /* décalage de la largeur bordure de la gauge */
+            top: -.15em;                    /* décalage de la largeur bordure de la gauge */
+            clip: rect(0, 1em, 1em, .5em);  /* par défaut seule la partie droite est visible */
+        }
+
+        .progress-circle{
+            position: relative;
+            box-sizing: border-box;
+            font-size: 6em;
+            width: 1em;                     /* fixe la largeur */
+            height: 1em;                    /* fixe la hauteur */
+            border-radius: 50%;             /* rendu aspect circulaire */
+            border: .15em solid grey;
+            background-color: #FFF;
+        }
+
+        .progress-barre,
+        .progress-sup50 {
+            position: absolute;
+            box-sizing: border-box;         /* prise en compte bordure dans la dimension */
+            border-width: .15em;
+            border-style: solid;
+            border-color: green;
+            border-radius: 50%;             /* rendu aspect circulaire */
+            width: 1em;                     /* largeur à 100% */
+            height: 1em;                    /* hauteur à 100% */
+            clip: rect(0, .5em, 1em, 0);
+        }
+        .progress-barre {transform: rotate({{$deg}})}
+    </style>
     <div>
+        <p><strong>Pourcentage : </strong>{{$pourcent}}</p>
+    </div>
+    <div>
+
         <a href="http://localhost:8000/jeux">Retour à la liste</a>
     </div>
     @if (auth()->check())
