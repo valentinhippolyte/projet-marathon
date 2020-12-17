@@ -61,21 +61,57 @@
         @endif
         <?php $count++?><p style="display: none">{{$sum+=$c['note']}}</p>
     @endforeach
+    @if($min<=2)
+        <div>
+            <p style="color: red"><strong>Note minimale du jeu : </strong>{{$min}}</p>
+        </div>
+    @endif
+    @if($min==3)
+        <div>
+            <p style="color: #FFD700"><strong>Note minimale du jeu : </strong>{{$min}}</p>
+        </div>
+    @endif
+    @if($min>3)
+        <div>
+            <p style="color: green"><strong>Note minimale du jeu : </strong>{{$min}}</p>
+        </div>
+    @endif
+    @if($max<=2)
+        <div>
+            <p style="color: red"><strong>Note maximale du jeu : </strong>{{$max}}</p>
+        </div>
+    @endif
+    @if($max==3)
+        <div>
+            <p style="color: #FFD700"><strong>Note maximale du jeu : </strong>{{$max}}</p>
+        </div>
+    @endif
+    @if($max>3)
+        <div>
+            <p style="color: green"><strong>Note maximale du jeu : </strong>{{$max}}</p>
+        </div>
+    @endif
     @if($count!=0)
-        <p><strong>Note moyenne du jeu : </strong>{{$sum/$count}}</p>
+        <?php $moyenne = $sum/$count?>
+        @if($moyenne<=2)
+            <div>
+                <p style="color: red"><strong>Note moyenne du jeu : </strong>{{$sum/$count}}</p>
+            </div>
+        @endif
+        @if(2<$moyenne && $moyenne<3)
+            <div>
+                <p style="color: #FFD700"><strong>Note moyenne du jeu : </strong>{{$sum/$count}}</p>
+            </div>
+        @endif
+        @if(3<=$moyenne)
+            <div>
+                <p style="color: green"><strong>Note moyenne du jeu : </strong>{{$sum/$count}}</p>
+            </div>
+        @endif
     @else
         <p><strong>Note moyenne du jeu : </strong>pas de note sur ce jeu</p>
     @endif
     <div>
-        {{-- la durée  --}}
-        <p><strong>Note maximale du jeu : </strong>{{$max}}</p>
-    </div>
-    <div>
-        {{-- la durée  --}}
-        <p><strong>Note minimale du jeu : </strong>{{$min}}</p>
-    </div>
-    <div>
-        {{-- la durée  --}}
         <p><strong>Nombre de commentaires pour le jeu : </strong>{{$count}}</p>
     </div>
     <div>

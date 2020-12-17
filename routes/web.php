@@ -29,7 +29,7 @@ Route::post('commentaires', [\App\Http\Controllers\CommentaireController::class,
 Route::get('/commentaires', [\App\Http\Controllers\JeuController::class, 'trie'])->name('commentaires.trie');
 Route::get('/regles', [\App\Http\Controllers\JeuController::class, 'regles'])->name('regles');
 Route::get('/jeux', [\App\Http\Controllers\JeuController::class, 'trie'])->name('jeux.trie');
-Route::get('/', [\App\Http\Controllers\JeuController::class, 'aléatoire'])->name('welcome');
+Route::get('/', [\App\Http\Controllers\JeuController::class, 'aleatoire'])->name('welcome');
 
 
 Route::get('/user', function () {
