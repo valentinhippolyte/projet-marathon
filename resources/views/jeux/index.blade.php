@@ -8,7 +8,7 @@
 @endsection
 @section('content')
     <h2>La liste des jeux</h2>
-    <div class="trie">
+    <div class="trie-index">
         <form action="{{route('jeux.trie')}}" method="GET">
             {!! csrf_field() !!}
             <label>Trier par : </label>

@@ -1,7 +1,8 @@
 @extends('base.master')
+
 @section('content')
     <div class="text-center" style="margin-top: 2rem">
-        <h3>Affichage d'un jeu</h3>
+        <h3>Les caractéristiques</h3>
         <hr class="mt-2 mb-2">
     </div>
     <div>
@@ -49,72 +50,75 @@
         {{-- la durée  --}}
         <p><strong>Durée : </strong>{{$jeu->duree}}</p>
     </div>
-    </div>
-    <div>Statistique du jeu</div>
-    <?php use App\Models\Commentaire;use App\Models\Jeu;use Illuminate\Support\Facades\Auth;$count = 0;$sum=0; $max=0; $min=5?>
-    @foreach($jeu->commentaires as $c)
-        @if($min>$c['note'])
-            <p style="display: none">{{$min = $c['note']}}</p>
-        @endif
-        @if($max<$c['note'])
-            <p style="display: none">{{$max = $c['note']}}</p>
-        @endif
-        <?php $count++?><p style="display: none">{{$sum+=$c['note']}}</p>
-    @endforeach
-    @if($count!=0)
-        <p><strong>Note moyenne du jeu : </strong>{{$sum/$count}}</p>
-    @else
-        <p><strong>Note moyenne du jeu : </strong>pas de note sur ce jeu</p>
-    @endif
-    <div>
-        {{-- la durée  --}}
-        <p><strong>Note maximale du jeu : </strong>{{$max}}</p>
-    </div>
-    <div>
-        {{-- la durée  --}}
-        <p><strong>Note minimale du jeu : </strong>{{$min}}</p>
-    </div>
-    <div>
-        {{-- la durée  --}}
-        <p><strong>Nombre de commentaires pour le jeu : </strong>{{$count}}</p>
-    </div>
-    <div>
-        <p><strong>Nombre de commentaires total pour tous les jeux : </strong>{{DB::table('commentaires')->count()}}</p>
-    </div>
-    <div>Informations tarifaires du jeu</div>
-    <div>
-        <?php $countA = 0;$sumA=0; $maxA=0; $minA=300?>
-        @foreach($jeu->acheteurs as $a)
-            @if($minA>$a['achat']['prix'])
-                <p style="display: none">{{$minA = $a['achat']['prix']}}</p>
-            @endif
-            @if($maxA<$a['achat']['prix'])
-                <p style="display: none">{{$maxA = $a['achat']['prix']}}</p>
-            @endif
-            <?php $countA++?><p style="display: none">{{$sumA+=$a['achat']['prix']}}</p>
-        @endforeach
-        @if($countA!=0)
-            <p><strong>Le prix moyen de ce jeu : </strong>{{$sumA/$countA}}</p>
-        @else
-            <p><strong>Le prix moyen de ce jeu : </strong>pas d'information sur le prix du jeu</p>
-        @endif
-    </div>
-    <div>
-        <p><strong>Prix maximal du jeu : </strong>{{$maxA}}</p>
-    </div>
 
-    <div>
-        <p><strong>Prix minimal du jeu : </strong>{{$minA}}</p>
-    </div>
-    <div>
-        <p><strong>Nombre d'utilisateur qui possède ce jeu : </strong>{{$countA}}</p>
-    </div>
-    <div>
-        <p><strong>Nombre total d'utilisateur du site : </strong>{{DB::table('users')->count()}}</p>
-    </div>
-    <div>
-        <a href="http://localhost:8000/jeux">Retour à la liste</a>
-    </div>
+
+        <div class="titrestatistique">Statistique du jeu</div>
+        <?php $count = 0;$sum=0; $max=0; $min=5?>
+        @foreach($jeu->commentaires as $c)
+            @if($min>$c['note'])
+                <p style="display: none">{{$min = $c['note']}}</p>
+            @endif
+            @if($max<$c['note'])
+                <p style="display: none">{{$max = $c['note']}}</p>
+            @endif
+            <?php $count++?><p style="display: none">{{$sum+=$c['note']}}</p>
+        @endforeach
+        @if($count!=0)
+            <p><strong>Note moyenne du jeu : </strong>{{$sum/$count}}</p>
+        @else
+            <p><strong>Note moyenne du jeu : </strong>pas de note sur ce jeu</p>
+        @endif
+        <div>
+            {{-- la durée  --}}
+            <p><strong>Note maximale du jeu : </strong>{{$max}}</p>
+        </div>
+        <div>
+            {{-- la durée  --}}
+            <p><strong>Note minimale du jeu : </strong>{{$min}}</p>
+        </div>
+        <div>
+            {{-- la durée  --}}
+            <p><strong>Nombre de commentaires pour le jeu : </strong>{{$count}}</p>
+        </div>
+        <div>
+            <p><strong>Nombre de commentaires total pour tous les jeux : </strong>{{DB::table('commentaires')->count()}}</p>
+        </div>
+        <div>Informations tarifaires du jeu</div>
+        <div>
+            <?php $countA = 0;$sumA=0; $maxA=0; $minA=300?>
+            @foreach($jeu->acheteurs as $a)
+                @if($minA>$a['achat']['prix'])
+                    <p style="display: none">{{$minA = $a['achat']['prix']}}</p>
+                @endif
+                @if($maxA<$a['achat']['prix'])
+                    <p style="display: none">{{$maxA = $a['achat']['prix']}}</p>
+                @endif
+                <?php $countA++?><p style="display: none">{{$sumA+=$a['achat']['prix']}}</p>
+            @endforeach
+            @if($countA!=0)
+                <div id="msform">
+                    <ul id="progressbar">
+                        <li class="min">{{$minA}}</li>
+                        <li class="moyen"><p>⇑</p>{{$sumA/$countA}}</li>
+                        <li class="max">{{$maxA}}</li>
+                    </ul>
+                </div>
+
+
+            @else
+                <p><strong>Le prix moyen de ce jeu : </strong>pas d'information sur le prix du jeu</p>
+            @endif
+
+            <br><br><br><br><br><br>
+            <div>
+                <p><strong>Nombre d'utilisateur qui possède ce jeu : </strong>{{$countA}}</p>
+            </div>
+            <div>
+                <p><strong>Nombre total d'utilisateur du site : </strong>{{DB::table('users')->count()}}</p>
+            </div>
+
+        </div>
+
 
     <?php $posted = false; ?>
         @foreach ($commentaires as $unCom)
@@ -135,85 +139,93 @@
                 </ul>
             </div>
         @endif
-
-        <form action="{{route('commentaires.store')}}" method="POST">
-            {!! csrf_field() !!}
-            <div class="text-center" style="margin-top: 2rem">
-                <h3>Ajouter un commentaire</h3>
-                <hr class="mt-2 mb-2">
-            </div>
-            <div>
-                <label>
-                    <textarea name="commentaire" placeholder="Votre commentaire..." cols="70" rows="3">{{old('commentaire')}}</textarea>
-                </label>
-            </div>
-            <div>
-                <label for="note">Note (0-5):</label>
-                <input type="number" class="form-control" id="note" name="note"
-                       min="0" max="5" value="{{old('note')}}">
-            </div>
-            <div>
-                <input type="hidden" id="jeu_id" name="jeu_id" value="{{$jeu->id}}">
-            </div>
-            <div>
-                <button class="btn btn-success" type="submit">Commenter</button>
-            </div>
-        </form>
-    @elseif(!auth()->check())
-        <p>Pour ajouter un commentaire, identifiez vous <a href="/login">ici</a></p>
-    @endif
-
-
-    <form method="GET">
-        {!! csrf_field() !!}
-        <label>Trier par :
-            <select name="trie" >
-                <option  value="Plus_recent">Plus récent</option>
-                <option  value="Plus_ancien">Plus ancien</option>
-            </select>
-        </label>
-        <input type="submit" name="button" value=" Trier ">
-    </form>
-    <div>
-        @if(isset($_GET['trie']) and $_GET['trie'] == "Plus_ancien")
-            @foreach($commentaires as $com)
-                @if($com->jeu_id == $jeu->id)
-                    @foreach($users as $user)
-                        @if($user->id == $com->user_id)
-                            <ul>
-                                <li>{{$user->name}}, {{$com->date_com}}</li>
-                                <li>Note: {{$com->note}}/5, Commentaire : {{$com->commentaire}}</li>
-                                <li>
-                                    @if(Auth::id() == $com->user_id or $jeu->user_id == Auth::id())
-                                        <a href="/jeux/commentaires/{{$com->id}}">Supprimer</a>
-                                    @endif
-                                </li>
-
-                            </ul>
-                            @break
-                        @endif
-                    @endforeach
-                @endif
-            @endforeach
-        @else
-            @foreach($commentairesTrie as $com)
-                @if($com->jeu_id == $jeu->id)
-                    @foreach($users as $user)
-                        @if($user->id == $com->user_id)
-                            <ul>
-                                <li>{{$user->name}}, {{$com->date_com}}</li>
-                                <li>Note: {{$com->note}}/5, Commentaire : {{$com->commentaire}}</li>
-                                @if(Auth::id() == $com->user_id or $jeu->user_id == Auth::id())
-                                    <a href="/jeux/commentaires/{{$com->id}}">Supprimer</a>
-                                @endif
-                            </ul>
-                            @break
-                        @endif
-                    @endforeach
-                @endif
-            @endforeach
+    <div class="section-commentaire">
+            <form action="{{route('commentaires.store')}}" method="POST">
+                {!! csrf_field() !!}
+                <div class="text-center" style="margin-top: 2rem">
+                    <h3>Ajouter un commentaire</h3>
+                    <hr class="mt-2 mb-2">
+                </div>
+                <div class="form-commentaire">
+                    <label>
+                        <textarea name="commentaire" placeholder="Votre commentaire..." cols="70" rows="3">{{old('commentaire')}}</textarea>
+                    </label>
+                </div>
+                <div class="form-auto-nb">
+                    <label for="note">Note (0-5):</label>
+                    <input type="number" class="form-control" id="note" name="note"
+                           min="0" max="5" value="{{old('note')}}">
+                </div>
+                <div>
+                    <input type="hidden" id="jeu_id" name="jeu_id" value="{{$jeu->id}}">
+                </div>
+                <div class="form-button">
+                    <button class="btn btn-success" type="submit">Commenter</button>
+                </div>
+            </form>
+        @elseif(!auth()->check())
+            <p>Pour ajouter un commentaire, identifiez vous <a href="/login">ici</a></p>
         @endif
+        <h3>Commentaires</h3>
+        <div class="ligne-trie">
+            <form method="GET">
+                {!! csrf_field() !!}
+                <label>Trier par :
+                    <select name="trie" >
+                        <option  value="Plus_recent">Plus récent</option>
+                        <option  value="Plus_ancien">Plus ancien</option>
+                    </select>
+                </label>
+                <input type="submit" name="button" value=" Trier ">
+            </form>
+
+        </div>
+        <div class="comment-list">
+            @if(isset($_GET['trie']) and $_GET['trie'] == "Plus_ancien")
+                @foreach($commentaires as $com)
+                    @if($com->jeu_id == $jeu->id)
+                        @foreach($users as $user)
+                            @if($user->id == $com->user_id)
+                                <ul>
+                                    <li>{{$user->name}}, {{$com->date_com}}</li>
+                                    <li>Note: {{$com->note}}/5, Commentaire : {{$com->commentaire}}</li>
+                                    <li>
+                                        @if(Auth::id() == $com->user_id or $jeu->user_id == Auth::id())
+                                            <a href="/jeux/commentaires/{{$com->id}}">Supprimer</a>
+                                        @endif
+                                    </li>
+
+                                </ul>
+                                @break
+                            @endif
+                        @endforeach
+                    @endif
+                @endforeach
+            @else
+
+                @foreach($commentairesTrie as $com)
+                    @if($com->jeu_id == $jeu->id)
+                        @foreach($users as $user)
+                            @if($user->id == $com->user_id)
+                                <ul>
+                                    <li>{{$user->name}}, {{$com->date_com}}</li>
+                                    <li>Note: {{$com->note}}/5, Commentaire : {{$com->commentaire}}</li>
+                                    <li>
+                                        @if(Auth::id() == $com->user_id or $jeu->user_id == Auth::id())
+                                            <a href="/jeux/commentaires/{{$com->id}}">Supprimer</a>
+                                        @endif
+                                    </li>
+
+                                </ul>
+                                @break
+                            @endif
+                        @endforeach
+                    @endif
+                @endforeach
+            @endif
+        </div>
     </div>
+
 
 @endsection
 

@@ -12,15 +12,17 @@
 
     <h2>Ludotheque</h2>
     <form method="GET">
-    <div class="card-columns">
+    <div class="card-deck container">
     @foreach(Auth::user()->ludo_perso as $valeur)
             <span style="display: none">{{$id=$valeur->id}}</span>
         @if($valeur!=null)
-        <x-CardGame id={{$id}} />
-                <div class="info-jeux" style="border-color: orange">
-                    <a class="link-info"href="/jeux/{{$id}}"><br>En savoir plus</a>
-                    <button type="submit" class="btn btn-primary" name="idV" value="{{$id}}">Supprimer</button>
-                </div>
+            <div>
+                <x-CardGame id={{$id}} />
+                    <div class="info-jeux">
+                        <a class="link-info"href="/jeux/{{$id}}"><br>En savoir plus</a>
+                        <button type="submit" class="btn btn-primary" name="idV" value="{{$id}}">Supprimer</button>
+                    </div>
+            </div>
             @endif
     @endforeach
     </div>

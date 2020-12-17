@@ -123,8 +123,14 @@ h5{
         column-count: 2;
     }
 }
+.trie-index{
+    text-align: right;
+    margin-right:15px ;
+}
 .info-jeux{
     margin-left: 50px;
+    max-height: 50px;
+    margin-bottom: 50px;
 
     btn{
         color: white;
@@ -156,3 +162,118 @@ h5{
     text-align: center;
     color: white;
 }
+.section-commentaire{
+    background-color:  rgba(37, 115, 125,0.8);
+    border: 1px solid #F46D25;
+    color: white;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.form-auto-nb{
+    max-width: 150px;
+    margin-left: 50px;
+}
+.form-commentaire{
+    margin-left: 50px;
+    min-height: 150px;
+    margin-top: 15px;
+    color: black;
+}
+.form-button{
+    margin-left: 50px;
+    margin-top: 15px;
+}
+.comment-list{
+    background-color: rgba(37, 115, 125,0.8);
+    border: 1px solid #F46D25;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    ul{
+        background-color: white;
+        margin: 20px;
+        color: black;
+    }
+}
+.ligne-trie{
+    color: black;
+    text-align: right;
+    margin-right: 15px;
+}
+.liste_jeux{
+    font-family: 'Nanum Myeongjo', serif;
+}
+.titrestatistique{
+    font-family: 'Lobster', cursive;
+    text-align: center;
+    margin-top: 30px;
+    font-size: 24px;
+}
+
+.bouton_commenter, .bouton_create{
+    padding-top: 20px;
+}
+.form_ajout_jeux{
+    padding-top: 20px;
+}
+
+
+#msform {
+    width: 50%;
+    margin: 50px auto;
+    text-align: center;
+    position: relative;
+}
+#progressbar li {
+    list-style-type: none;
+    color: black;
+    text-transform: uppercase;
+
+    width: 33.33%;
+    float: left;
+    position: relative;
+}
+#progressbar li.min:before {
+    content: "min";
+}
+#progressbar li.max:before {
+    content: "max";
+}
+#progressbar li.moyen:before {
+    content: "moyen";
+}
+#progressbar li.moyen p {
+    font-size: 200%;
+    color: #1c7430;
+}
+#progressbar li:before {
+    width: 60%;
+    line-height: 20px;
+    padding: 10px;
+    display: block;
+    font-size: 200%;
+    background: grey;
+    border-radius: 3px;
+    margin: 0 auto 5px auto;
+}
+
+#progressbar li:after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    font-size: 150%;
+    background: black;
+    position: absolute;
+    left: -50%;
+    top: 25%;
+    z-index: -1;
+}
+#progressbar li:first-child:after {
+    content: none;
+}
+#progressbar li.min:before,  #progressbar li.min:after{
+    background: green;
+}
+#progressbar li.max:before{
+    background: red;
+}
+
